@@ -18,7 +18,7 @@ export const projects: PortfolioProject[] = [
     period: '2022.07 ~ 2022.12',
     role: '플랫폼 기능 개발 및 운영 지원',
     contribution: '20%',
-    summary: '인턴 입사 후 처음 참여한 데이터 기반 플랫폼 프로젝트로, 대용량 데이터 조회와 운영 화면 개발을 경험한 프로젝트',
+    summary: '초기 실무에서 참여한 데이터 기반 플랫폼 프로젝트로, 대용량 데이터 조회와 운영 화면 개발을 경험한 프로젝트',
     keywords: ['Big Data', 'Dashboard', 'Data Processing', 'Platform'],
     achievements: ['실무 개발 프로세스 적응', '데이터 기반 화면 개발 경험 축적', '운영 데이터 흐름 이해도 향상'],
     overview:
