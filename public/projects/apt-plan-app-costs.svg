@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="390" height="844" viewBox="0 0 390 844" role="img" aria-label="입주비용 항목 화면 예시">
+  <rect width="390" height="844" fill="#f7f9fc"/>
+  <text x="22" y="44" fill="#101828" font-family="Arial, sans-serif" font-size="26" font-weight="700">입주비용</text>
+  <text x="22" y="70" fill="#667085" font-family="Arial, sans-serif" font-size="14">금액은 포트폴리오용으로 비식별 처리</text>
+  <text x="22" y="118" fill="#101828" font-family="Arial, sans-serif" font-size="22" font-weight="700">1. 계약금</text>
+  <rect x="22" y="142" width="346" height="154" rx="22" fill="#ffffff"/>
+  <text x="42" y="180" fill="#101828" font-family="Arial, sans-serif" font-size="19" font-weight="700">1차</text>
+  <text x="42" y="214" fill="#667085" font-family="Arial, sans-serif" font-size="15">상태</text>
+  <text x="298" y="214" fill="#2f80ed" font-family="Arial, sans-serif" font-size="15" font-weight="700">완료</text>
+  <text x="42" y="248" fill="#667085" font-family="Arial, sans-serif" font-size="15">금액</text>
+  <text x="276" y="248" fill="#98a2b3" font-family="Arial, sans-serif" font-size="15">비공개</text>
+  <rect x="22" y="316" width="346" height="154" rx="22" fill="#ffffff"/>
+  <text x="42" y="354" fill="#101828" font-family="Arial, sans-serif" font-size="19" font-weight="700">2차</text>
+  <text x="42" y="388" fill="#667085" font-family="Arial, sans-serif" font-size="15">상태</text>
+  <text x="298" y="388" fill="#2f80ed" font-family="Arial, sans-serif" font-size="15" font-weight="700">완료</text>
+  <text x="42" y="422" fill="#667085" font-family="Arial, sans-serif" font-size="15">금액</text>
+  <text x="276" y="422" fill="#98a2b3" font-family="Arial, sans-serif" font-size="15">비공개</text>
+  <text x="22" y="526" fill="#101828" font-family="Arial, sans-serif" font-size="22" font-weight="700">2. 중도금</text>
+  <rect x="22" y="550" width="346" height="154" rx="22" fill="#ffffff"/>
+  <text x="42" y="588" fill="#101828" font-family="Arial, sans-serif" font-size="19" font-weight="700">항목 예시</text>
+  <text x="42" y="622" fill="#667085" font-family="Arial, sans-serif" font-size="15">납입일자</text>
+  <text x="260" y="622" fill="#98a2b3" font-family="Arial, sans-serif" font-size="15">YYYY.MM.DD</text>
+  <text x="42" y="656" fill="#667085" font-family="Arial, sans-serif" font-size="15">금액</text>
+  <text x="276" y="656" fill="#98a2b3" font-family="Arial, sans-serif" font-size="15">비공개</text>
+  <rect x="0" y="764" width="390" height="80" fill="#ffffff"/>
+  <circle cx="66" cy="792" r="11" fill="#98a2b3"/>
+  <circle cx="146" cy="792" r="11" fill="#2f80ed"/>
+  <circle cx="226" cy="792" r="11" fill="#98a2b3"/>
+  <circle cx="306" cy="792" r="11" fill="#98a2b3"/>
+</svg>

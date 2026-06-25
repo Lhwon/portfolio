@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="390" height="844" viewBox="0 0 390 844" role="img" aria-label="입주비용관리 앱 개요 화면 예시">
+  <rect width="390" height="844" fill="#f7f9fc"/>
+  <text x="22" y="44" fill="#101828" font-family="Arial, sans-serif" font-size="26" font-weight="700">입주비용관리</text>
+  <text x="22" y="70" fill="#667085" font-family="Arial, sans-serif" font-size="14">민감 금액을 제외한 화면 예시</text>
+  <rect x="22" y="96" width="346" height="148" rx="24" fill="#ffffff"/>
+  <text x="42" y="132" fill="#475467" font-family="Arial, sans-serif" font-size="14">프로젝트 목적</text>
+  <text x="42" y="170" fill="#101828" font-family="Arial, sans-serif" font-size="30" font-weight="700">비용 항목 구조화</text>
+  <rect x="42" y="195" width="92" height="12" rx="6" fill="#2f80ed"/>
+  <rect x="144" y="195" width="66" height="12" rx="6" fill="#d0d5dd"/>
+  <rect x="220" y="195" width="92" height="12" rx="6" fill="#d0d5dd"/>
+  <rect x="22" y="268" width="164" height="112" rx="20" fill="#ffffff"/>
+  <text x="42" y="306" fill="#667085" font-family="Arial, sans-serif" font-size="13">화면 구성</text>
+  <text x="42" y="336" fill="#101828" font-family="Arial, sans-serif" font-size="20" font-weight="700">입주비용</text>
+  <rect x="204" y="268" width="164" height="112" rx="20" fill="#ffffff"/>
+  <text x="224" y="306" fill="#667085" font-family="Arial, sans-serif" font-size="13">계산 항목</text>
+  <text x="224" y="336" fill="#101828" font-family="Arial, sans-serif" font-size="20" font-weight="700">후불이자</text>
+  <rect x="22" y="404" width="346" height="292" rx="24" fill="#ffffff"/>
+  <text x="42" y="442" fill="#101828" font-family="Arial, sans-serif" font-size="20" font-weight="700">주요 기능</text>
+  <rect x="42" y="472" width="306" height="52" rx="16" fill="#f2f4f7"/>
+  <text x="62" y="505" fill="#344054" font-family="Arial, sans-serif" font-size="15">비용 항목 상태 관리</text>
+  <rect x="42" y="540" width="306" height="52" rx="16" fill="#f2f4f7"/>
+  <text x="62" y="573" fill="#344054" font-family="Arial, sans-serif" font-size="15">Excel 기반 정적 데이터 모델링</text>
+  <rect x="42" y="608" width="306" height="52" rx="16" fill="#f2f4f7"/>
+  <text x="62" y="641" fill="#344054" font-family="Arial, sans-serif" font-size="15">Riverpod 상태 관리</text>
+  <rect x="0" y="764" width="390" height="80" fill="#ffffff"/>
+  <circle cx="66" cy="792" r="11" fill="#2f80ed"/>
+  <circle cx="146" cy="792" r="11" fill="#98a2b3"/>
+  <circle cx="226" cy="792" r="11" fill="#98a2b3"/>
+  <circle cx="306" cy="792" r="11" fill="#98a2b3"/>
+</svg>

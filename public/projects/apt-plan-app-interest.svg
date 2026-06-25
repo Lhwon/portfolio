@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="390" height="844" viewBox="0 0 390 844" role="img" aria-label="후불이자 화면 예시">
+  <rect width="390" height="844" fill="#f7f9fc"/>
+  <text x="22" y="44" fill="#101828" font-family="Arial, sans-serif" font-size="26" font-weight="700">후불이자</text>
+  <text x="22" y="70" fill="#667085" font-family="Arial, sans-serif" font-size="14">민감 금액 없이 계산 흐름만 표시</text>
+  <rect x="22" y="96" width="346" height="124" rx="22" fill="#ffffff"/>
+  <text x="42" y="134" fill="#667085" font-family="Arial, sans-serif" font-size="14">계산 기준</text>
+  <text x="42" y="170" fill="#101828" font-family="Arial, sans-serif" font-size="28" font-weight="700">회차별 이자 관리</text>
+  <rect x="22" y="244" width="346" height="122" rx="22" fill="#ffffff"/>
+  <text x="42" y="282" fill="#101828" font-family="Arial, sans-serif" font-size="19" font-weight="700">1회차</text>
+  <text x="42" y="316" fill="#667085" font-family="Arial, sans-serif" font-size="15">연 이율</text>
+  <text x="290" y="316" fill="#98a2b3" font-family="Arial, sans-serif" font-size="15">샘플</text>
+  <text x="42" y="344" fill="#667085" font-family="Arial, sans-serif" font-size="15">예상 금액</text>
+  <text x="276" y="344" fill="#98a2b3" font-family="Arial, sans-serif" font-size="15">비공개</text>
+  <rect x="22" y="386" width="346" height="122" rx="22" fill="#ffffff"/>
+  <text x="42" y="424" fill="#101828" font-family="Arial, sans-serif" font-size="19" font-weight="700">2회차</text>
+  <text x="42" y="458" fill="#667085" font-family="Arial, sans-serif" font-size="15">연 이율</text>
+  <text x="290" y="458" fill="#98a2b3" font-family="Arial, sans-serif" font-size="15">샘플</text>
+  <text x="42" y="486" fill="#667085" font-family="Arial, sans-serif" font-size="15">예상 금액</text>
+  <text x="276" y="486" fill="#98a2b3" font-family="Arial, sans-serif" font-size="15">비공개</text>
+  <rect x="22" y="548" width="346" height="112" rx="22" fill="#ffffff"/>
+  <text x="42" y="586" fill="#101828" font-family="Arial, sans-serif" font-size="19" font-weight="700">데이터 구조</text>
+  <text x="42" y="620" fill="#667085" font-family="Arial, sans-serif" font-size="15">회차, 납입일, 이율, 상태를 모델링</text>
+  <rect x="0" y="764" width="390" height="80" fill="#ffffff"/>
+  <circle cx="66" cy="792" r="11" fill="#98a2b3"/>
+  <circle cx="146" cy="792" r="11" fill="#98a2b3"/>
+  <circle cx="226" cy="792" r="11" fill="#2f80ed"/>
+  <circle cx="306" cy="792" r="11" fill="#98a2b3"/>
+</svg>
