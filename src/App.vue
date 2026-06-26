@@ -14,12 +14,12 @@
 </template>
 
 <script setup lang="ts">
-import AboutSection from './components/AboutSection.vue'
-import AppFooter from './components/AppFooter.vue'
-import AppHeader from './components/AppHeader.vue'
-import CareerSection from './components/CareerSection.vue'
-import HeroSection from './components/HeroSection.vue'
-import ProjectSection from './components/ProjectSection.vue'
-import ResumeSection from './components/ResumeSection.vue'
-import SkillSection from './components/SkillSection.vue'
+import AboutSection from '@/components/AboutSection.vue'
+import AppFooter from '@/components/layout/AppFooter.vue'
+import AppHeader from '@/components/layout/AppHeader.vue'
+import CareerSection from '@/components/CareerSection.vue'
+import HeroSection from '@/components/HeroSection.vue'
+import ProjectSection from '@/components/ProjectSection.vue'
+import ResumeSection from '@/components/ResumeSection.vue'
+import SkillSection from '@/components/SkillSection.vue'
 </script>

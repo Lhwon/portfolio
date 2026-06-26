@@ -3,7 +3,7 @@ import type { Profile } from '../types/portfolio'
 const publicBaseUrl = import.meta.env.BASE_URL
 
 export const profile: Profile = {
-  name: 'Lee Hwon',
+  name: 'Lee Hee won',
   title: 'Full-Stack Web Developer',
   summary:
     '산업 현장의 운영 데이터를 웹으로 연결하고, 실시간 관제와 대시보드 성능을 개선하는 개발자입니다.',

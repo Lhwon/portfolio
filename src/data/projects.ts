@@ -1,16 +1,66 @@
 import type { PortfolioProject } from '../types/portfolio'
-import acsMonitoringImage from '../assets/images/acsmonitoring.png'
-import bigDataPlatformImage from '../assets/images/big_data_flatform.png'
-import emsImage from '../assets/images/ems.png'
-import hseImage from '../assets/images/hse.png'
-import mesImage from '../assets/images/mes.png'
+import acsMonitoringImage from '@/assets/images/acsmonitoring.png'
+import bigDataPlatformImage from '@/assets/images/big_data_flatform.png'
+import emsImage from '@/assets/images/ems.png'
+import hseImage from '@/assets/images/hse.png'
+import mesImage from '@/assets/images/mes.png'
+
 
 const publicBaseUrl = import.meta.env.BASE_URL
+
+const bcrHandheldImageModules = import.meta.glob<string>(
+  '/src/assets/images/bcrhandheld/*.png',
+  {
+    eager: true,
+    import: 'default',
+  },
+)
+
+const bcrHandheldImageMap = Object.fromEntries(
+  Object.entries(bcrHandheldImageModules).map(([path, url]) => {
+    const fileName = path.split('/').pop() ?? ''
+
+    return [fileName, url]
+  }),
+)
+
+const bcrHandheldImages = [
+  bcrHandheldImageMap['splash.png'],
+  bcrHandheldImageMap['login.png'],
+  bcrHandheldImageMap['menu.png'],
+  bcrHandheldImageMap['barcodeScanning.png'],
+  bcrHandheldImageMap['barcodeList.png'],
+  bcrHandheldImageMap['scanlog.png'],
+  bcrHandheldImageMap['scanlog_search.png'],
+  bcrHandheldImageMap['userInfo.png'],
+].filter(Boolean)
+
+const nexusImageModules = import.meta.glob<string>(
+  '/src/assets/images/nexus/*.png',
+  {
+    eager: true,
+    import: 'default',
+  },
+)
+
+const nexusImageMap = Object.fromEntries(
+  Object.entries(nexusImageModules).map(([path, url]) => {
+    const fileName = path.split('/').pop() ?? ''
+
+    return [fileName, url]
+  }),
+)
+
+const nexusImages = [
+  nexusImageMap['dashboard.png'],
+  nexusImageMap['agvDashboard.png'],
+  nexusImageMap['hisiotryDashboard.png'],
+].filter((url): url is string => Boolean(url))
 
 export const projects: PortfolioProject[] = [
   {
     id: 'big-data-platform',
-    name: 'Big Data Platform',
+    name: '빅데이터 플랫폼',
     company: '일주GNS',
     thumbnailUrl: bigDataPlatformImage,
     detailImageUrl: bigDataPlatformImage,
@@ -67,7 +117,7 @@ export const projects: PortfolioProject[] = [
   },
   {
     id: 'hi-energy-monitoring',
-    name: 'Hi-Energy Monitoring System',
+    name: 'Hi-Energy 식용수 모니터링 시스템',
     company: '일주GNS',
     thumbnailUrl: emsImage,
     detailImageUrl: emsImage,
@@ -96,7 +146,7 @@ export const projects: PortfolioProject[] = [
   },
   {
     id: 'hse-safety-management',
-    name: 'HSE Integrated Safety Management',
+    name: 'HSE 안전 관리 시스템',
     company: '일주GNS',
     thumbnailUrl: hseImage,
     detailImageUrl: hseImage,
@@ -134,7 +184,7 @@ export const projects: PortfolioProject[] = [
   },
   {
     id: 'asset-management-system',
-    name: 'Asset Management System',
+    name: 'i-tams 자산 관리 시스템',
     company: '일주GNS',
     period: '2024.08 ~ 2024.11',
     role: '프론트엔드 및 백엔드 개발',
@@ -201,8 +251,12 @@ export const projects: PortfolioProject[] = [
   },
   {
     id: 'android-barcode-reader',
-    name: 'Android Barcode Reader',
+    name: 'BCR Handheld',
     company: '벰로보틱스',
+    thumbnailUrl: bcrHandheldImageMap['barcodeScanning.png'],
+    detailImageUrl: bcrHandheldImageMap['barcodeScanning.png'],
+    imageUrls: bcrHandheldImages,
+    imageAlt: 'BCR Handheld Android 앱 화면',
     period: '2026.01 ~ 2026.02',
     role: 'Android 애플리케이션 개발',
     contribution: '100%',
@@ -224,6 +278,49 @@ export const projects: PortfolioProject[] = [
     ],
     results: ['현장 입력 업무 간소화', '바코드 기반 데이터 조회 속도 개선', '모바일 단말 운영 편의성 향상'],
     technologies: ['Android Studio', 'Java', 'Barcode Scanner', 'Mobile UI'],
+  },
+  {
+    id: 'acs-nexus',
+    name: 'ACS 통합 관제 시스템',
+    company: '벰로보틱스',
+    thumbnailUrl: nexusImageMap['dashboard.png'],
+    detailImageUrl: nexusImageMap['dashboard.png'],
+    imageUrls: nexusImages,
+    imageAlt: 'ACS 통합 관제 시스템 화면',
+    period: '2025.03 ~ 현재',
+    role: '프론트엔드 및 백엔드 개발',
+    contribution: '40%',
+    summary:
+      '2025년 3월 Web 기반 ACS 시스템 개발을 시작했고, 2026년 4월부터 AGV/AMR 관제 시스템을 고도화 중인 프로젝트',
+    keywords: ['ACS', 'AGV/AMR', 'WebSocket', '2D/3D Map', 'Realtime Control', 'Enhancement'],
+    achievements: [
+      '대용량 맵 환경에서도 부드러운 렌더링 유지',
+      '실시간 관제 정확도 향상',
+      '네트워크 지연 환경에서도 끊김 없는 주행 표현 구현',
+    ],
+    overview:
+      'AGV/AMR 위치, 배터리, 에러 상태를 실시간으로 동기화하고 공장 레이아웃 위에서 관제하는 Web 기반 ACS 시스템입니다. 2026년 4월부터 운영성과 사용성을 높이기 위한 고도화를 진행하고 있습니다.',
+    responsibilities: ['관제 UI 개발', '실시간 상태 동기화', '렌더링 최적화', '주행 애니메이션 구현', '운영 기능 고도화'],
+    implementations: [
+      '공장 레이아웃 2D/3D 시각화',
+      'AGV/AMR 위치, 배터리, 에러 상태 실시간 동기화',
+      'WebSocket 기반 실시간 관제 및 제어 인터페이스 구현',
+      'Map 자료구조 기반 데이터 관리 구조 개선',
+      'requestAnimationFrame 기반 렌더링 최적화',
+      'Lerp/Slerp 보간 알고리즘 기반 주행 애니메이션 구현',
+      '운영 편의성을 높이기 위한 화면 및 제어 기능 개선',
+      '2026년 4월 이후 현장 피드백 기반 고도화 기능 반영',
+    ],
+    problemSolving: [
+      '상태 데이터를 Map 구조로 관리해 갱신 비용과 탐색 비용을 줄였습니다.',
+      '프레임 단위 렌더링과 보간을 적용해 지연 환경에서도 움직임이 자연스럽게 보이도록 개선했습니다.',
+    ],
+    results: [
+      '대용량 맵 환경에서도 부드러운 렌더링 유지',
+      '실시간 관제 정확도 향상',
+      '운영 가시성 및 제어 효율 향상',
+    ],
+    technologies: ['Vue 3', 'TypeScript', 'WebSocket', 'Canvas', 'Three.js', 'ACS'],
   },
   {
     id: 'apt-plan-app',
@@ -269,3 +366,4 @@ export const projects: PortfolioProject[] = [
     technologies: ['Flutter', 'Dart', 'Riverpod', 'GoRouter', 'SharedPreferences', 'fl_chart'],
   },
 ]
+

@@ -4,7 +4,7 @@
       <div class="mb-8">
         <p class="section-eyebrow">Career</p>
         <h2 class="text-h4 font-weight-bold">경력 요약</h2>
-        <p class="text-medium-emphasis mt-3">총 3년 이상의 산업 현장 시스템 개발 및 운영 경험</p>
+        <p class="text-medium-emphasis mt-3">시스템 개발 및 운영 경험</p>
       </div>
 
       <v-card class="mb-10" color="surface" variant="flat">
