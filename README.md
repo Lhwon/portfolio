@@ -43,7 +43,7 @@ PDF 버튼은 아래 경로를 기준으로 연결됩니다.
 
 ## 프로필 이미지 경로
 
-기본 프로필 이미지는 `public/profile/profile-placeholder.svg` 입니다. 실제 이미지를 사용할 경우 `public/profile` 또는 `src/assets/profile` 아래에 관리할 수 있습니다. 현재 설정은 `src/data/profile.ts`에서 변경합니다.
+프로필 이미지는 `src/assets/profile/profile-me.png`를 사용합니다. 다른 이미지를 사용할 경우 `src/assets/profile` 아래에 파일을 추가하고 `src/data/profile.ts`에서 import 경로를 변경합니다.
 
 ## 프로젝트 이미지 경로
 

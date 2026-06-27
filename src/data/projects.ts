@@ -83,7 +83,8 @@ export const projects: PortfolioProject[] = [
       '운영 중 발견되는 화면 오류와 데이터 표시 이슈를 빠르게 수정하며 실무 개발 흐름에 적응했습니다.',
     ],
     results: ['실무 개발 프로세스 적응', '데이터 기반 화면 개발 경험 축적', '운영 데이터 흐름 이해도 향상'],
-    technologies: ['Vue2', 'Spring Boot', 'PostgreSQL']
+    technologies: ['Vue2', 'Spring Boot', 'PostgreSQL'],
+    libraries: ['devExpress', 'EChart', 'Vuetify']
   },
   {
     id: 'smart-web-mes',
@@ -140,7 +141,7 @@ export const projects: PortfolioProject[] = [
     ],
     results: ['개발 생산성 향상', '운영 자동화 수준 개선', '모니터링 정확도 향상'],
     technologies: ['Vue2', 'Spring Boot', 'MSSQL'],
-    libraries: ['TuiGrid', 'EChart'],
+    libraries: ['TuiGrid', 'EChart', 'Vuetify'],
   },
   {
     id: 'hse-safety-management',
@@ -178,7 +179,7 @@ export const projects: PortfolioProject[] = [
       '데이터 일관성 및 운영 효율 개선',
     ],
     technologies: ['Vue3', 'Spring Boot', 'Oracle'],
-    libraries: ['TuiGrid', 'EChart'],
+    libraries: ['RealGrid', 'EChart', 'OZ Report', 'Vuetify'],
   },
   {
     id: 'asset-management-system',
@@ -202,7 +203,8 @@ export const projects: PortfolioProject[] = [
       '자산 상태와 분류 기준을 정리해 운영자가 필요한 정보를 빠르게 찾을 수 있도록 구성했습니다.',
     ],
     results: ['자산 관리 업무 흐름 표준화', '자산 조회 및 관리 편의성 향상', '내부 운영 데이터 관리 기반 마련'],
-    technologies: ['Vue3', 'Spring Boot', 'PostgreSQL']
+    technologies: ['Vue3', 'Spring Boot', 'PostgreSQL'],
+    libraries: ['Vuetify', 'Jasper'],
   },
   {
     id: 'acs-web-ui',
@@ -243,8 +245,8 @@ export const projects: PortfolioProject[] = [
       '실시간 관제 정확도 향상',
       '운영 가시성 및 제어 효율 향상',
     ],
-    technologies: ['Vue3', 'Spring Boot', 'MariaDB'],
-    libraries: ['Three.js'],
+    technologies: ['Vue3', 'TypeScript', 'Spring Boot', 'MariaDB'],
+    libraries: ['Three.js', 'EChart', 'Vuetify', 'TuiGrid'],
   },
   {
     id: 'android-barcode-reader',
