@@ -1,4 +1,4 @@
-import type { CareerItem, CareerStory } from '../types/portfolio'
+import type { CareerItem, CareerStory } from '@/types/portfolio'
 
 export const careerStory: CareerStory = {
   title: 'Developer Story',

@@ -57,7 +57,7 @@
 
 <script setup lang="ts">
 import { computed } from 'vue'
-import { profile } from '../data/profile'
+import { profile } from '@/data/profile'
 
 const githubUrl = computed(() => profile.contacts.find((contact) => contact.label === 'GitHub')?.href ?? '#')
 

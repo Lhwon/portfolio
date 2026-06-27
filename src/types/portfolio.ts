@@ -42,7 +42,6 @@ export interface PortfolioProject {
   imageUrls?: string[]
   imageAlt?: string
   period: string
-  role: string
   contribution: string
   summary: string
   keywords: string[]
@@ -53,4 +52,5 @@ export interface PortfolioProject {
   problemSolving: string[]
   results: string[]
   technologies: string[]
+  libraries?: string[]
 }

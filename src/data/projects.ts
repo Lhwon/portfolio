@@ -1,4 +1,4 @@
-import type { PortfolioProject } from '../types/portfolio'
+import type { PortfolioProject } from '@/types/portfolio'
 import acsMonitoringImage from '@/assets/images/acsmonitoring.png'
 import bigDataPlatformImage from '@/assets/images/big_data_flatform.png'
 import emsImage from '@/assets/images/ems.png'
@@ -66,7 +66,6 @@ export const projects: PortfolioProject[] = [
     detailImageUrl: bigDataPlatformImage,
     imageAlt: 'Big Data Platform 화면',
     period: '2022.07 ~ 2022.12',
-    role: '플랫폼 기능 개발 및 운영 지원',
     contribution: '20%',
     summary: '초기 실무에서 참여한 데이터 기반 플랫폼 프로젝트로, 대용량 데이터 조회와 운영 화면 개발을 경험한 프로젝트',
     keywords: ['Big Data', 'Dashboard', 'Data Processing', 'Platform'],
@@ -84,7 +83,7 @@ export const projects: PortfolioProject[] = [
       '운영 중 발견되는 화면 오류와 데이터 표시 이슈를 빠르게 수정하며 실무 개발 흐름에 적응했습니다.',
     ],
     results: ['실무 개발 프로세스 적응', '데이터 기반 화면 개발 경험 축적', '운영 데이터 흐름 이해도 향상'],
-    technologies: ['JavaScript', 'SQL', 'Dashboard', 'Big Data'],
+    technologies: ['Vue2', 'Spring Boot', 'PostgreSQL']
   },
   {
     id: 'smart-web-mes',
@@ -94,7 +93,6 @@ export const projects: PortfolioProject[] = [
     detailImageUrl: mesImage,
     imageAlt: 'Smart Web MES 화면',
     period: '2023.01 ~ 2023.05',
-    role: '프론트엔드 및 백엔드 개발',
     contribution: '20%',
     summary: '제조 현장의 자재, 재고, 생산 공정 데이터를 웹 기반으로 관리하고 시각화하는 MES 프로젝트',
     keywords: ['MES', 'Inventory', 'Production', 'Role Based UI'],
@@ -113,7 +111,7 @@ export const projects: PortfolioProject[] = [
       '반복되는 상태 표시 로직을 공통 구조로 묶어 운영 변경 대응 속도를 높였습니다.',
     ],
     results: ['공정 데이터 가시성 향상', '관리 오류 감소', '운영 업무 흐름 개선'],
-    technologies: ['Vue', 'JavaScript', 'SQL', 'Backend API', 'MES'],
+    technologies: ['Vue2', 'Spring Boot', 'PostgreSQL']
   },
   {
     id: 'hi-energy-monitoring',
@@ -123,7 +121,6 @@ export const projects: PortfolioProject[] = [
     detailImageUrl: emsImage,
     imageAlt: 'Hi-Energy Monitoring System 화면',
     period: '2023.05 ~ 2023.09',
-    role: '프론트엔드 및 백엔드 개발',
     contribution: '30%',
     summary: '현대중공업 협력 프로젝트로 에너지 사용량과 운영 데이터를 실시간으로 확인하고 자동화 업무를 지원하는 모니터링 시스템',
     keywords: ['EMS', 'Monitoring', 'Automation', 'Reusable Components'],
@@ -142,7 +139,8 @@ export const projects: PortfolioProject[] = [
       '화면별 데이터 표시 규칙을 정리해 모니터링 결과의 일관성을 높였습니다.',
     ],
     results: ['개발 생산성 향상', '운영 자동화 수준 개선', '모니터링 정확도 향상'],
-    technologies: ['Vue', 'JavaScript', 'SQL', 'Scheduler', 'Monitoring'],
+    technologies: ['Vue2', 'Spring Boot', 'MSSQL'],
+    libraries: ['TuiGrid', 'EChart'],
   },
   {
     id: 'hse-safety-management',
@@ -152,7 +150,6 @@ export const projects: PortfolioProject[] = [
     detailImageUrl: hseImage,
     imageAlt: 'HSE Integrated Safety Management 화면',
     period: '2023.10 ~ 2024.08',
-    role: '프론트엔드 및 백엔드 개발',
     contribution: '20%',
     summary: '현대중공업 협력 프로젝트로 현장 안전 관리와 위험성 평가 업무를 시스템화한 통합 안전관리 프로젝트',
     keywords: ['HSE', 'Risk Assessment', 'Dashboard', 'Data Migration'],
@@ -180,14 +177,14 @@ export const projects: PortfolioProject[] = [
       '5천만 건 이상 데이터 마이그레이션 안정화',
       '데이터 일관성 및 운영 효율 개선',
     ],
-    technologies: ['Vue', 'SQL', 'Batch', 'Dashboard', 'HSE'],
+    technologies: ['Vue3', 'Spring Boot', 'Oracle'],
+    libraries: ['TuiGrid', 'EChart'],
   },
   {
     id: 'asset-management-system',
     name: 'i-tams 자산 관리 시스템',
     company: '일주GNS',
     period: '2024.08 ~ 2024.11',
-    role: '프론트엔드 및 백엔드 개발',
     contribution: '40%',
     summary: '자사 내부 자산 정보를 등록, 조회, 관리할 수 있도록 개발한 자산관리 시스템',
     keywords: ['Asset Management', 'CRUD', 'Admin', 'Internal System'],
@@ -205,7 +202,7 @@ export const projects: PortfolioProject[] = [
       '자산 상태와 분류 기준을 정리해 운영자가 필요한 정보를 빠르게 찾을 수 있도록 구성했습니다.',
     ],
     results: ['자산 관리 업무 흐름 표준화', '자산 조회 및 관리 편의성 향상', '내부 운영 데이터 관리 기반 마련'],
-    technologies: ['Vue', 'JavaScript', 'SQL', 'Admin UI'],
+    technologies: ['Vue3', 'Spring Boot', 'PostgreSQL']
   },
   {
     id: 'acs-web-ui',
@@ -215,7 +212,6 @@ export const projects: PortfolioProject[] = [
     detailImageUrl: acsMonitoringImage,
     imageAlt: 'ACS Web UI 관제 화면',
     period: '2025.03 ~ 현재',
-    role: '프론트엔드 및 백엔드 개발',
     contribution: '40%',
     summary:
       '2025년 3월 Web 기반 ACS 시스템 개발을 시작했고, 2026년 4월부터 AGV/AMR 관제 시스템을 고도화 중인 프로젝트',
@@ -247,7 +243,8 @@ export const projects: PortfolioProject[] = [
       '실시간 관제 정확도 향상',
       '운영 가시성 및 제어 효율 향상',
     ],
-    technologies: ['Vue 3', 'TypeScript', 'WebSocket', 'Canvas', 'Three.js', 'ACS'],
+    technologies: ['Vue3', 'Spring Boot', 'MariaDB'],
+    libraries: ['Three.js'],
   },
   {
     id: 'android-barcode-reader',
@@ -258,7 +255,6 @@ export const projects: PortfolioProject[] = [
     imageUrls: bcrHandheldImages,
     imageAlt: 'BCR Handheld Android 앱 화면',
     period: '2026.01 ~ 2026.02',
-    role: 'Android 애플리케이션 개발',
     contribution: '100%',
     summary: '산업 현장 단말에서 바코드를 스캔하고 작업 데이터를 빠르게 확인할 수 있도록 개발한 Android 앱',
     keywords: ['Android', 'Java', 'Barcode', 'Mobile App', 'Field Operation'],
@@ -277,7 +273,7 @@ export const projects: PortfolioProject[] = [
       '스캔 실패와 잘못된 데이터 입력 상황을 고려해 사용자 피드백을 명확하게 제공했습니다.',
     ],
     results: ['현장 입력 업무 간소화', '바코드 기반 데이터 조회 속도 개선', '모바일 단말 운영 편의성 향상'],
-    technologies: ['Android Studio', 'Java', 'Barcode Scanner', 'Mobile UI'],
+    technologies: ['Android Studio', 'Java', 'Spring Boot', 'MariaDB'],
   },
   {
     id: 'acs-nexus',
@@ -288,7 +284,6 @@ export const projects: PortfolioProject[] = [
     imageUrls: nexusImages,
     imageAlt: 'ACS 통합 관제 시스템 화면',
     period: '2025.03 ~ 현재',
-    role: '프론트엔드 및 백엔드 개발',
     contribution: '40%',
     summary:
       '2025년 3월 Web 기반 ACS 시스템 개발을 시작했고, 2026년 4월부터 AGV/AMR 관제 시스템을 고도화 중인 프로젝트',
@@ -320,7 +315,8 @@ export const projects: PortfolioProject[] = [
       '실시간 관제 정확도 향상',
       '운영 가시성 및 제어 효율 향상',
     ],
-    technologies: ['Vue 3', 'TypeScript', 'WebSocket', 'Canvas', 'Three.js', 'ACS'],
+    technologies: ['Vue3', 'TypeScript', 'Java', 'Spring Boot', 'PostgreSQL'],
+    libraries: ['Three.js'],
   },
   {
     id: 'apt-plan-app',
@@ -335,7 +331,6 @@ export const projects: PortfolioProject[] = [
     ],
     imageAlt: '입주비용관리 Flutter 앱 화면 예시',
     period: '2026.06 ~ 최근',
-    role: 'Flutter 앱 설계 및 개발',
     contribution: '100%',
     summary: '입주 비용 항목과 후불 이자 정보를 모바일에서 구조적으로 확인할 수 있도록 개발한 개인용 Flutter 앱',
     keywords: ['Flutter', 'Dart', 'Riverpod', 'GoRouter', 'Cost Ledger', 'Private Data Masking'],
@@ -363,7 +358,7 @@ export const projects: PortfolioProject[] = [
       '향후 Google Sheets 연동이 가능한 데이터 계층 기반 마련',
       '민감 정보 없이 프로젝트 구조와 UI 의도를 설명할 수 있는 포트폴리오 이미지 구성',
     ],
-    technologies: ['Flutter', 'Dart', 'Riverpod', 'GoRouter', 'SharedPreferences', 'fl_chart'],
+    technologies: ['Flutter', 'Dart'],
+    libraries: ['Riverpod', 'GoRouter', 'SharedPreferences', 'fl_chart'],
   },
 ]
-

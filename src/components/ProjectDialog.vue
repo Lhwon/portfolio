@@ -13,7 +13,7 @@
       </v-toolbar>
 
       <v-card-text class="pa-6">
-        <div class="project-detail-image mb-6">
+        <div class="project-detail-image mb-8">
           <v-carousel
             v-if="projectImages.length > 0"
             class="project-image-carousel"
@@ -24,9 +24,11 @@
             <v-carousel-item v-for="(imageUrl, index) in projectImages" :key="imageUrl">
               <v-img
                 :alt="`${project.imageAlt ?? project.name} ${index + 1}`"
+                class="project-dialog-image"
                 contain
                 height="360"
                 :src="imageUrl"
+                @dblclick="openFullscreenImage(imageUrl)"
               />
             </v-carousel-item>
           </v-carousel>
@@ -36,34 +38,84 @@
           </div>
         </div>
 
-        <div class="d-flex flex-wrap ga-2 mb-6">
-          <v-chip color="info" variant="tonal">{{ project.company }}</v-chip>
-          <v-chip color="primary" variant="tonal">{{ project.period }}</v-chip>
-          <v-chip color="secondary" variant="tonal">{{ project.role }}</v-chip>
-          <v-chip color="accent" variant="tonal">기여도 {{ project.contribution }}</v-chip>
-        </div>
+        <section class="project-dialog-heading mb-8">
+          <h2 class="text-h4 text-md-h3 font-weight-bold mb-5">{{ project.name }}</h2>
+
+          <div class="project-property-list">
+            <div class="project-property-row">
+              <v-icon class="project-property-icon" icon="mdi-calendar-range" size="20" />
+              <span class="project-property-label">기간</span>
+              <span class="text-body-2">{{ project.period }}</span>
+            </div>
+
+            <div class="project-property-row">
+              <v-icon class="project-property-icon" icon="mdi-office-building-outline" size="20" />
+              <span class="project-property-label">회사</span>
+              <span class="text-body-2">{{ project.company }}</span>
+            </div>
+
+            <div class="project-property-row">
+              <v-icon class="project-property-icon" icon="mdi-code-tags" size="20" />
+              <span class="project-property-label">사용 기술</span>
+              <div class="d-flex flex-wrap ga-2">
+                <v-chip
+                  v-for="technology in primaryTechnologies"
+                  :key="technology"
+                  class="technology-chip"
+                  :prepend-icon="getTechnologyChipIcon(technology)"
+                  size="small"
+                  :style="getTechnologyChipStyle(technology)"
+                  variant="flat"
+                >
+                  {{ technology }}
+                </v-chip>
+              </div>
+            </div>
+
+            <div v-if="libraryTechnologies.length > 0" class="project-property-row">
+              <v-icon class="project-property-icon" icon="mdi-package-variant-closed" size="20" />
+              <span class="project-property-label">라이브러리</span>
+              <div class="d-flex flex-wrap ga-2">
+                <v-chip
+                  v-for="technology in libraryTechnologies"
+                  :key="technology"
+                  class="technology-chip"
+                  :prepend-icon="getTechnologyChipIcon(technology)"
+                  size="small"
+                  :style="getTechnologyChipStyle(technology)"
+                  variant="flat"
+                >
+                  {{ technology }}
+                </v-chip>
+              </div>
+            </div>
+
+            <div class="project-property-row">
+              <v-icon class="project-property-icon" icon="mdi-percent-outline" size="20" />
+              <span class="project-property-label">기여도</span>
+              <span class="text-body-2">{{ project.contribution }}</span>
+            </div>
+
+            <div class="project-property-row project-property-row--description">
+              <v-icon class="project-property-icon" icon="mdi-text-box-outline" size="20" />
+              <span class="project-property-label">설명</span>
+              <p class="text-body-2 text-medium-emphasis mb-0">{{ project.summary }}</p>
+            </div>
+          </div>
+        </section>
 
         <v-row>
           <v-col cols="12" md="6">
             <DetailBlock title="프로젝트 개요" :items="[project.overview]" />
-            <DetailBlock title="담당 역할" :items="project.responsibilities" />
             <DetailBlock title="기술적 문제와 해결" :items="project.problemSolving" />
           </v-col>
           <v-col cols="12" md="6">
             <DetailBlock title="주요 구현 기능" :items="project.implementations" />
             <DetailBlock title="성과" :items="project.results" />
-            <div class="mb-6">
-              <h4 class="text-subtitle-1 font-weight-bold mb-3">기술 스택</h4>
-              <div class="d-flex flex-wrap ga-2">
-                <v-chip v-for="technology in project.technologies" :key="technology" color="primary" variant="tonal">
-                  {{ technology }}
-                </v-chip>
-              </div>
-            </div>
             <div>
               <h4 class="text-subtitle-1 font-weight-bold mb-3">관련 키워드</h4>
               <div class="d-flex flex-wrap ga-2">
-                <v-chip v-for="keyword in project.keywords" :key="keyword" variant="outlined">
+                <v-chip v-for="keyword in project.keywords" :key="keyword" color="primary" variant="tonal">
                   {{ keyword }}
                 </v-chip>
               </div>
@@ -77,13 +129,40 @@
       </v-card-actions>
     </v-card>
   </v-dialog>
+
+  <v-dialog
+    class="project-fullscreen-dialog"
+    fullscreen
+    :model-value="Boolean(fullscreenImageUrl)"
+    @update:model-value="handleFullscreenUpdate"
+  >
+    <div class="project-fullscreen-viewer d-flex align-center justify-center" @click="closeFullscreenImage">
+      <v-btn
+        aria-label="전체 화면 이미지 닫기"
+        class="project-fullscreen-close"
+        color="surface"
+        icon="mdi-close"
+        variant="flat"
+        @click.stop="closeFullscreenImage"
+      />
+      <v-img
+        v-if="fullscreenImageUrl"
+        :alt="project?.imageAlt ?? '프로젝트 전체 화면 이미지'"
+        class="project-fullscreen-image"
+        contain
+        :src="fullscreenImageUrl"
+        @click.stop
+      />
+    </div>
+  </v-dialog>
 </template>
 
 <script setup lang="ts">
-import { computed, defineComponent, h } from 'vue'
+import { computed, defineComponent, h, ref } from 'vue'
 import { useDisplay } from 'vuetify'
 import type { PropType } from 'vue'
-import type { PortfolioProject } from '../types/portfolio'
+import type { PortfolioProject } from '@/types/portfolio'
+import { getTechnologyChipIcon, getTechnologyChipStyle } from '@/utils/technologyChips'
 
 const props = defineProps<{
   project: PortfolioProject | null
@@ -94,6 +173,7 @@ const emit = defineEmits<{
 }>()
 
 const { smAndDown } = useDisplay()
+const fullscreenImageUrl = ref<string | null>(null)
 
 const projectImages = computed(() => {
   if (!props.project) {
@@ -102,6 +182,45 @@ const projectImages = computed(() => {
 
   return props.project.imageUrls ?? (props.project.detailImageUrl ? [props.project.detailImageUrl] : [])
 })
+
+const primaryTechnologies = computed(() => {
+  if (!props.project) {
+    return []
+  }
+
+  return props.project.technologies
+})
+
+const libraryTechnologies = computed(() => {
+  if (!props.project) {
+    return []
+  }
+
+  return props.project.libraries ?? []
+})
+
+/**
+ * 선택한 프로젝트 이미지를 전체 화면 뷰어로 연다.
+ */
+const openFullscreenImage = (imageUrl: string) => {
+  fullscreenImageUrl.value = imageUrl
+}
+
+/**
+ * 전체 화면 이미지 뷰어를 닫는다.
+ */
+const closeFullscreenImage = () => {
+  fullscreenImageUrl.value = null
+}
+
+/**
+ * ESC 입력이나 바깥 클릭으로 전체 화면 이미지 뷰어를 닫는다.
+ */
+const handleFullscreenUpdate = (isOpen: boolean) => {
+  if (!isOpen) {
+    closeFullscreenImage()
+  }
+}
 
 const DetailBlock = defineComponent({
   props: {

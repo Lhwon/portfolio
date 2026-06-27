@@ -23,5 +23,5 @@
 </template>
 
 <script setup lang="ts">
-import { skillGroups } from '../data/skills'
+import { skillGroups } from '@/data/skills'
 </script>

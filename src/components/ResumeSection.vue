@@ -42,7 +42,7 @@
 </template>
 
 <script setup lang="ts">
-import { profile } from '../data/profile'
+import { profile } from '@/data/profile'
 
 const documents = [
   {

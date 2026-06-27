@@ -34,8 +34,8 @@
 import { computed, ref } from 'vue'
 import ProjectCard from './ProjectCard.vue'
 import ProjectDialog from './ProjectDialog.vue'
-import { projects } from '../data/projects'
-import type { PortfolioProject } from '../types/portfolio'
+import { projects } from '@/data/projects'
+import type { PortfolioProject } from '@/types/portfolio'
 
 const companyPeriods = new Map([
   ['일주GNS', '2022.07 - 2024.11'],

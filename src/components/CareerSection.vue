@@ -52,5 +52,5 @@
 </template>
 
 <script setup lang="ts">
-import { careerItems, careerStory } from '../data/career'
+import { careerItems, careerStory } from '@/data/career'
 </script>

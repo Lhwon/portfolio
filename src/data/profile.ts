@@ -1,4 +1,4 @@
-import type { Profile } from '../types/portfolio'
+import type { Profile } from '@/types/portfolio'
 
 const publicBaseUrl = import.meta.env.BASE_URL
 
