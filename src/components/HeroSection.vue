@@ -69,22 +69,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from "vue";
 import { profile } from "@/data/profile";
-
-const githubUrl = computed(
-  () =>
-    profile.contacts.find((contact) => contact.label === "GitHub")?.href ?? "#",
-);
-
-/**
- * 프로젝트 섹션으로 화면을 이동한다.
- */
-const scrollToProjects = () => {
-  document
-    .getElementById("projects")
-    ?.scrollIntoView({ behavior: "smooth", block: "start" });
-};
 </script>
 
 <style lang="scss" scoped>
