@@ -166,9 +166,31 @@ body {
   background: rgba(255, 255, 255, 0.72);
 }
 
+/* 상세 이미지마다 좌측 하단 설명을 선택적으로 표시하기 위한 기준 영역이다. */
+.project-dialog-image-frame {
+  position: relative;
+  height: 360px;
+}
+
 /* 상세 팝업 이미지는 더블클릭으로 크게 볼 수 있음을 커서로 전달한다. */
 .project-dialog-image {
   cursor: zoom-in;
+}
+
+/* 이미지 설명은 이미지가 있을 때만 좌측 하단에 겹쳐 보여준다. */
+.project-image-caption {
+  position: absolute;
+  bottom: 14px;
+  left: 14px;
+  max-width: min(70%, 520px);
+  padding: 8px 12px;
+  border-radius: 6px;
+  background: rgba(15, 23, 42, 0.78);
+  color: #ffffff;
+  font-size: 0.82rem;
+  font-weight: 600;
+  line-height: 1.4;
+  pointer-events: none;
 }
 
 /* 프로젝트 팝업의 이미지 아래에 제목과 속성 정보를 문서형 레이아웃으로 배치한다. */
@@ -283,6 +305,18 @@ body {
 
   .project-image-carousel {
     height: 260px !important;
+  }
+
+  .project-dialog-image-frame {
+    height: 260px;
+  }
+
+  .project-image-caption {
+    right: 10px;
+    bottom: 10px;
+    left: 10px;
+    max-width: none;
+    font-size: 0.76rem;
   }
 
   .project-fullscreen-viewer {

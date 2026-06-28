@@ -25,14 +25,23 @@
               v-for="(imageUrl, index) in projectImages"
               :key="imageUrl"
             >
-              <v-img
-                :alt="`${project.imageAlt ?? project.name} ${index + 1}`"
-                class="project-dialog-image"
-                contain
-                height="360"
-                :src="imageUrl"
-                @dblclick="openFullscreenImage(imageUrl)"
-              />
+              <div class="project-dialog-image-frame">
+                <v-img
+                  :alt="`${project.imageAlt ?? project.name} ${index + 1}`"
+                  class="project-dialog-image"
+                  contain
+                  height="360"
+                  :src="imageUrl"
+                  @dblclick="openFullscreenImage(imageUrl)"
+                />
+
+                <div
+                  v-if="getImageCaption(index)"
+                  class="project-image-caption"
+                >
+                  {{ getImageCaption(index) }}
+                </div>
+              </div>
             </v-carousel-item>
           </v-carousel>
 
@@ -253,6 +262,17 @@ const libraryTechnologies = computed(() => {
 
   return props.project.libraries ?? []
 })
+
+/**
+ * 이미지 순서에 맞는 설명을 반환한다
+ */
+const getImageCaption = (index: number) => {
+  if (!props.project) {
+    return ''
+  }
+
+  return props.project.imageCaptions?.[index] ?? props.project.imageCaption ?? ''
+}
 
 /**
  * 선택한 프로젝트 이미지를 전체 화면 뷰어로 연다

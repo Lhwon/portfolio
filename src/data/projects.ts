@@ -1,5 +1,4 @@
 import type { PortfolioProject } from '@/types/portfolio'
-import acsMonitoringImage from '@/assets/images/acsmonitoring.png'
 import bigDataPlatformImage from '@/assets/images/big_data_flatform.png'
 import emsImage from '@/assets/images/ems.png'
 import hseImage from '@/assets/images/hse.png'
@@ -28,9 +27,9 @@ const bcrHandheldImages = [
   bcrHandheldImageMap['page4.png'],
   bcrHandheldImageMap['page5.png'],
   bcrHandheldImageMap['page6.png'],
-  bcrHandheldImageMap['page7.png'],
   bcrHandheldImageMap['page8.png'],
-].filter(Boolean)
+  bcrHandheldImageMap['page9.png'],
+].filter((url): url is string => Boolean(url))
 
 const nexusImageModules = import.meta.glob<string>(
   '/src/assets/images/nexus/*.png',
@@ -53,6 +52,30 @@ const nexusImages = [
   nexusImageMap['agvDashboard.png'],
   nexusImageMap['hisiotryDashboard.png'],
 ].filter((url): url is string => Boolean(url))
+
+const acsImageModules = import.meta.glob<string>(
+  '/src/assets/images/acs/*.png',
+  {
+    eager: true,
+    import: 'default',
+  },
+)
+
+const acsImageMap = Object.fromEntries(
+  Object.entries(acsImageModules).map(([path, url]) => {
+    const fileName = path.split('/').pop() ?? ''
+
+    return [fileName, url]
+  }),
+)
+
+const acsImages = [
+  acsImageMap['page1.png'],
+  acsImageMap['page2.png'],
+].filter((url): url is string => Boolean(url))
+
+const acsMainImage = acsImageMap['page1.png'] ?? acsImages[0]
+const acsDetailImage = acsImageMap['page2.png'] ?? acsMainImage
 
 const aptAppImageModules = import.meta.glob<string>(
   [
@@ -91,6 +114,7 @@ export const projects: PortfolioProject[] = [
     thumbnailUrl: bigDataPlatformImage,
     detailImageUrl: bigDataPlatformImage,
     imageAlt: 'Big Data Platform 화면',
+    imageCaption: '메인 대시보드',
     period: '2022.07 ~ 2022.12',
     contribution: '20%',
     summary:
@@ -167,6 +191,7 @@ export const projects: PortfolioProject[] = [
     thumbnailUrl: emsImage,
     detailImageUrl: emsImage,
     imageAlt: 'Hi-Energy Monitoring System 화면',
+    imageCaption: '대시보드',
     period: '2023.05 ~ 2023.09',
     contribution: '30%',
     summary:
@@ -292,12 +317,18 @@ export const projects: PortfolioProject[] = [
     id: 'acs-web-ui',
     name: 'ACS Web UI',
     company: '벰로보틱스',
-    thumbnailUrl: acsMonitoringImage,
-    detailImageUrl: acsMonitoringImage,
+    thumbnailUrl: acsMainImage,
+    detailImageUrl: acsDetailImage,
+    imageUrls: acsImages,
     imageAlt: 'ACS Web UI 관제 화면',
+    imageCaptions: [
+      '초기 ACS 화면',
+      '고객사 요청 반영 ACS 화면',
+    ],
     period: '2025.03 ~ 현재',
     contribution: '40%',
-    summary: 'AGV/AMR의 위치, 상태, 명령, 이력 데이터를 통합 관제 화면에서 실시간으로 모니터링하고 제어할 수 있도록 고도화한 Web 기반 ACS 프로젝트',
+    summary:
+      'AGV/AMR의 위치, 상태, 명령, 이력 데이터를 통합 관제 화면에서 실시간으로 모니터링하고 제어할 수 있도록 고도화한 Web 기반 ACS 프로젝트',
     keywords: ['ACS', 'AGV/AMR', 'WebSocket', '2D/3D Map', 'Realtime Control', 'Enhancement'],
     achievements: [
       '대용량 맵 환경에서도 부드러운 렌더링 유지',
@@ -305,7 +336,7 @@ export const projects: PortfolioProject[] = [
       '네트워크 지연 환경에서도 끊김 없는 주행 표현 구현',
     ],
     overview:
-      'AGV/AMR 위치, 배터리, 에러 상태를 실시간으로 동기화하고 공장 레이아웃 위에서 관제하는 Web 기반 ACS 시스템 및 운영성 중심 고도화',
+      'AGV/AMR 위치, 배터리, 에러, 명령 상태, 이력 데이터를 실시간으로 동기화하고 공장 레이아웃 위에서 관제하는 Web 기반 ACS 시스템',
     responsibilities: ['관제 UI 개발', '실시간 상태 동기화', '렌더링 최적화', '주행 애니메이션 구현', '운영 기능 고도화'],
     implementations: [
       '공장 레이아웃 2D/3D 시각화',
@@ -315,7 +346,7 @@ export const projects: PortfolioProject[] = [
       'requestAnimationFrame 기반 렌더링 최적화',
       'Lerp/Slerp 보간 알고리즘 기반 주행 애니메이션 구현',
       '운영 편의성을 높이기 위한 화면 및 제어 기능 개선',
-      '2026년 4월 이후 피드백 기반 고도화 진행 중',
+      '현장 피드백 기반 관제 화면 고도화',
     ],
     problemSolving: [
       '상태 데이터를 Map 구조로 관리한 갱신 비용 및 탐색 비용 감소',
@@ -334,9 +365,19 @@ export const projects: PortfolioProject[] = [
     name: 'BCR Handheld',
     company: '벰로보틱스',
     thumbnailUrl: bcrHandheldImageMap['page3.png'],
-    detailImageUrl: bcrHandheldImageMap['barcodeScanning.png'],
+    detailImageUrl: bcrHandheldImageMap['page3.png'],
     imageUrls: bcrHandheldImages,
     imageAlt: 'BCR Handheld Android 앱 화면',
+    imageCaptions: [
+      '앱 스플래시',
+      '로그인',
+      '바코드 스캐닝',
+      '저장된 바코드 목록',
+      '바코드 스캔 로그',
+      '바코드 스캔 검색',
+      '앱 메뉴 구성',
+      '사용자 정보',
+    ],
     period: '2026.01 ~ 2026.02',
     contribution: '100%',
     summary: '산업 현장 단말에서 바코드를 스캔하고 작업 데이터를 빠르게 확인할 수 있도록 개발한 Android 앱',
@@ -366,10 +407,15 @@ export const projects: PortfolioProject[] = [
     detailImageUrl: nexusImageMap['dashboard.png'],
     imageUrls: nexusImages,
     imageAlt: 'ACS 통합 관제 시스템 화면',
+    imageCaptions: [
+      '통합 대시보드',
+      'AGV/AMR 상태와 작업 흐름을 확인하는 관제 대시보드',
+      '이력 데이터를 조회하고 분석하는 히스토리 대시보드',
+    ],
     period: '2025.03 ~ 현재',
     contribution: '100%',
     summary:
-      '2025년 3월 Web 기반 ACS 시스템 개발을 시작했고, 2026년 4월부터 AGV/AMR 관제 시스템을 고도화 중인 프로젝트',
+      'AGV/AMR의 실시간 상태와 명령 흐름을 통합 관제 화면에서 모니터링하고 제어할 수 있도록 개발한 Web 기반 ACS 프로젝트',
     keywords: ['ACS', 'AGV/AMR', 'WebSocket', '2D/3D Map', 'Realtime Control', 'Enhancement'],
     achievements: [
       '대용량 맵 환경에서도 부드러운 렌더링 유지',
@@ -377,7 +423,7 @@ export const projects: PortfolioProject[] = [
       '네트워크 지연 환경에서도 끊김 없는 주행 표현 구현',
     ],
     overview:
-      'AGV/AMR 위치, 배터리, 에러 상태를 실시간으로 동기화하고 공장 레이아웃 위에서 관제하는 Web 기반 ACS 시스템 및 운영성 중심 고도화',
+      'AGV/AMR의 위치, 배터리, 에러, 명령 상태, 이력 데이터를 WebSocket으로 실시간 동기화하고 차량 상태와 작업 흐름을 직관적으로 파악하는 Web 기반 ACS 시스템',
     responsibilities: ['관제 UI 개발', '실시간 상태 동기화', '렌더링 최적화', '주행 애니메이션 구현', '운영 기능 고도화'],
     implementations: [
       '공장 레이아웃 2D/3D 시각화',
@@ -387,7 +433,7 @@ export const projects: PortfolioProject[] = [
       'requestAnimationFrame 기반 렌더링 최적화',
       'Lerp/Slerp 보간 알고리즘 기반 주행 애니메이션 구현',
       '운영 편의성을 높이기 위한 화면 및 제어 기능 개선',
-      '2026년 4월 이후 현장 피드백 기반 고도화 기능 반영',
+      '현장 피드백 기반 고도화 기능 반영',
     ],
     problemSolving: [
       '상태 데이터를 Map 구조로 관리한 갱신 비용 및 탐색 비용 감소',
@@ -409,9 +455,17 @@ export const projects: PortfolioProject[] = [
     detailImageUrl: aptAppDetailImage,
     imageUrls: aptAppImages,
     imageAlt: '입주비용관리 Flutter 앱 화면',
+    imageCaptions: [
+      '입주 비용 현황 요약 대시보드',
+      '비용 항목',
+      '중도금 이자 관리',
+      '목표 금액 달성을 위한 잔금 마련',
+      '앱 설정',
+    ],
     period: '2026.06 ~ 최근',
     contribution: '100%',
-    summary: '입주 비용과 후불 이자 데이터를 Google Sheets와 연동해 모바일에서 관리할 수 있도록 개발한 개인용 Flutter 앱',
+    summary:
+      '입주 비용과 후불 이자 데이터를 Google Sheets와 연동해 모바일에서 관리할 수 있도록 개발한 개인용 Flutter 앱',
     keywords: ['Flutter', 'Dart', 'Riverpod', 'GoRouter', 'Google Sheets API', 'Private Finance'],
     achievements: [
       'Google Sheets 기반 데이터 양방향 동기화 구현',
