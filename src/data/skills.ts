@@ -3,22 +3,22 @@ import type { SkillGroup } from '@/types/portfolio'
 export const skillGroups: SkillGroup[] = [
   {
     title: 'Frontend',
-    items: ['Vue 3', 'TypeScript', 'Vuetify', 'JavaScript', 'WebSocket'],
+    items: ['Vue 3', 'JavaScript', 'TypeScript', 'Vuetify', 'WebSocket'],
   },
   {
     title: 'Backend & Data',
-    items: ['Node.js', 'REST API', 'SQL', 'Data Migration', 'Batch Scheduling'],
+    items: ['Spring Boot', 'Node.js', 'REST API', 'SQL', 'Data Migration'],
   },
   {
     title: 'Mobile & Device',
-    items: ['Flutter', 'Dart', 'Android Studio', 'Java', 'Barcode Scanner', 'Mobile UI'],
+    items: ['Flutter', 'Dart', 'Android Studio', 'Java'],
   },
   {
     title: 'Industrial Systems',
-    items: ['MES', 'HSE', 'EMS', 'ACS', 'AGV/AMR Control', 'Realtime Monitoring'],
+    items: ['MES', 'HSE', 'EMS', 'AGV/AMR Control'],
   },
   {
     title: 'Operations',
-    items: ['Dashboard Performance', 'System Maintenance', 'CI/CD', 'Kubernetes', 'Docker'],
+    items: ['Kubernetes', 'Docker', 'CI/CD'],
   },
 ]
