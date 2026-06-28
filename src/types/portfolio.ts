@@ -23,14 +23,7 @@ export interface SkillGroup {
 export interface CareerItem {
   period: string
   company: string
-  role: string
-  summary: string
-  highlights: string[]
-}
-
-export interface CareerStory {
-  title: string
-  paragraphs: string[]
+  projectName: string
 }
 
 export interface PortfolioProject {

@@ -33,7 +33,7 @@ const navigationItems = [
   { label: 'Skills', targetId: 'skills' },
   { label: 'Career', targetId: 'career' },
   { label: 'Projects', targetId: 'projects' },
-  { label: 'Resume', targetId: 'resume' },
+  // { label: 'Resume', targetId: 'resume' },
 ]
 
 const theme = useTheme()

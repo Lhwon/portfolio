@@ -7,7 +7,7 @@
       <SkillSection />
       <CareerSection />
       <ProjectSection />
-      <ResumeSection />
+      <!-- <ResumeSection /> -->
     </v-main>
     <AppFooter />
   </v-app>
@@ -20,6 +20,6 @@ import AppHeader from '@/components/layout/AppHeader.vue'
 import CareerSection from '@/components/CareerSection.vue'
 import HeroSection from '@/components/HeroSection.vue'
 import ProjectSection from '@/components/ProjectSection.vue'
-import ResumeSection from '@/components/ResumeSection.vue'
+// import ResumeSection from '@/components/ResumeSection.vue'
 import SkillSection from '@/components/SkillSection.vue'
 </script>
