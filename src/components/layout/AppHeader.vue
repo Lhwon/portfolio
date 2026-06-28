@@ -1,7 +1,7 @@
 <template>
   <v-app-bar class="app-header border-b-sm" :color="headerColor" flat>
     <v-container class="d-flex align-center">
-      <v-app-bar-title class="font-weight-bold">Lee Heewon</v-app-bar-title>
+      <v-app-bar-title class="font-weight-bold">Lee Hee Won</v-app-bar-title>
 
       <div class="d-none d-md-flex ga-1">
         <v-btn
