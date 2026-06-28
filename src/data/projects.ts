@@ -5,9 +5,6 @@ import emsImage from '@/assets/images/ems.png'
 import hseImage from '@/assets/images/hse.png'
 import mesImage from '@/assets/images/mes.png'
 
-
-const publicBaseUrl = import.meta.env.BASE_URL
-
 const bcrHandheldImageModules = import.meta.glob<string>(
   '/src/assets/images/bcrhandheld/*.png',
   {
@@ -25,14 +22,14 @@ const bcrHandheldImageMap = Object.fromEntries(
 )
 
 const bcrHandheldImages = [
-  bcrHandheldImageMap['splash.png'],
-  bcrHandheldImageMap['login.png'],
-  bcrHandheldImageMap['menu.png'],
-  bcrHandheldImageMap['barcodeScanning.png'],
-  bcrHandheldImageMap['barcodeList.png'],
-  bcrHandheldImageMap['scanlog.png'],
-  bcrHandheldImageMap['scanlog_search.png'],
-  bcrHandheldImageMap['userInfo.png'],
+  bcrHandheldImageMap['page1.png'],
+  bcrHandheldImageMap['page2.png'],
+  bcrHandheldImageMap['page3.png'],
+  bcrHandheldImageMap['page4.png'],
+  bcrHandheldImageMap['page5.png'],
+  bcrHandheldImageMap['page6.png'],
+  bcrHandheldImageMap['page7.png'],
+  bcrHandheldImageMap['page8.png'],
 ].filter(Boolean)
 
 const nexusImageModules = import.meta.glob<string>(
@@ -56,6 +53,35 @@ const nexusImages = [
   nexusImageMap['agvDashboard.png'],
   nexusImageMap['hisiotryDashboard.png'],
 ].filter((url): url is string => Boolean(url))
+
+const aptAppImageModules = import.meta.glob<string>(
+  [
+    '/src/assets/images/aptapp/*.png',
+    '/src/assets/images/aptapp/*.jpg',
+    '/src/assets/images/aptapp/*.jpeg',
+    '/src/assets/images/aptapp/*.webp',
+  ],
+  {
+    eager: true,
+    import: 'default',
+  },
+)
+
+const aptAppImageMap = Object.fromEntries(
+  Object.entries(aptAppImageModules).map(([path, url]) => {
+    const fileName = path.split('/').pop() ?? ''
+
+    return [fileName, url]
+  }),
+)
+
+const aptAppImages = Object.entries(aptAppImageMap)
+  .sort(([a], [b]) => a.localeCompare(b))
+  .map(([, url]) => url)
+  .filter((url): url is string => Boolean(url))
+
+const aptAppThumbnailImage = aptAppImageMap['dashboard.png'] ?? aptAppImages[0]
+const aptAppDetailImage = aptAppImageMap['dashboard.png'] ?? aptAppImages[0]
 
 export const projects: PortfolioProject[] = [
   {
@@ -84,7 +110,7 @@ export const projects: PortfolioProject[] = [
     ],
     results: ['실무 개발 프로세스 적응', '데이터 기반 화면 개발 경험 축적', '운영 데이터 흐름 이해도 향상'],
     technologies: ['Vue2', 'Spring Boot', 'PostgreSQL'],
-    libraries: ['devExpress', 'EChart', 'Vuetify']
+    libraries: ['devExpress', 'EChart', 'Vuetify'],
   },
   {
     id: 'smart-web-mes',
@@ -112,7 +138,7 @@ export const projects: PortfolioProject[] = [
       '반복되는 상태 표시 로직을 공통 구조로 묶어 운영 변경 대응 속도를 높였습니다.',
     ],
     results: ['공정 데이터 가시성 향상', '관리 오류 감소', '운영 업무 흐름 개선'],
-    technologies: ['Vue2', 'Spring Boot', 'PostgreSQL']
+    technologies: ['Vue2', 'Spring Boot', 'PostgreSQL'],
   },
   {
     id: 'hi-energy-monitoring',
@@ -252,7 +278,7 @@ export const projects: PortfolioProject[] = [
     id: 'android-barcode-reader',
     name: 'BCR Handheld',
     company: '벰로보틱스',
-    thumbnailUrl: bcrHandheldImageMap['barcodeScanning.png'],
+    thumbnailUrl: bcrHandheldImageMap['page3.png'],
     detailImageUrl: bcrHandheldImageMap['barcodeScanning.png'],
     imageUrls: bcrHandheldImages,
     imageAlt: 'BCR Handheld Android 앱 화면',
@@ -324,43 +350,40 @@ export const projects: PortfolioProject[] = [
     id: 'apt-plan-app',
     name: '입주비용관리',
     company: 'Side Project',
-    thumbnailUrl: `${publicBaseUrl}projects/apt-plan-app-overview.svg`,
-    detailImageUrl: `${publicBaseUrl}projects/apt-plan-app-overview.svg`,
-    imageUrls: [
-      `${publicBaseUrl}projects/apt-plan-app-overview.svg`,
-      `${publicBaseUrl}projects/apt-plan-app-costs.svg`,
-      `${publicBaseUrl}projects/apt-plan-app-interest.svg`,
-    ],
-    imageAlt: '입주비용관리 Flutter 앱 화면 예시',
+    thumbnailUrl: aptAppThumbnailImage,
+    detailImageUrl: aptAppDetailImage,
+    imageUrls: aptAppImages,
+    imageAlt: '입주비용관리 Flutter 앱 화면',
     period: '2026.06 ~ 최근',
     contribution: '100%',
-    summary: '입주 비용 항목과 후불 이자 정보를 모바일에서 구조적으로 확인할 수 있도록 개발한 개인용 Flutter 앱',
-    keywords: ['Flutter', 'Dart', 'Riverpod', 'GoRouter', 'Cost Ledger', 'Private Data Masking'],
+    summary: '입주 비용, 후불 이자, 잔금 준비, 월지출 데이터를 Google Sheets와 연동해 모바일에서 관리할 수 있도록 개발한 개인용 Flutter 앱',
+    keywords: ['Flutter', 'Dart', 'Riverpod', 'GoRouter', 'Google Sheets API', 'Private Finance'],
     achievements: [
-      '입주 비용 항목을 모바일 화면에서 보기 쉽게 구조화',
-      'Excel 기반 정적 데이터를 앱 데이터 구조로 변환',
-      '민감 금액 노출 없이 포트폴리오용 화면 예시 구성',
+      'Google Sheets 기반 데이터 양방향 동기화 구현',
+      '입주 비용과 잔금 준비 현황을 모바일 대시보드로 구조화',
+      '백엔드 없이 개인용 운영 가능한 앱 구조 구현',
     ],
     overview:
-      '입주 비용 관리 대장을 바탕으로 비용 항목과 후불 이자 정보를 모바일에서 확인할 수 있도록 만든 개인용 Flutter 앱입니다. 포트폴리오에는 민감 금액을 제외한 화면 예시만 노출합니다.',
-    responsibilities: ['Flutter 앱 구조 설계', '비용 항목 UI 개발', '정적 데이터 모델링', '탭 기반 화면 구성', '포트폴리오용 비식별 이미지 구성'],
+      '입주 비용 관리 대장을 Google Sheets와 연동해 모바일에서 확인하고 수정할 수 있도록 만든 개인용 Flutter 앱입니다. 포트폴리오에는 민감 금액을 제외한 화면 이미지만 노출합니다.',
+    responsibilities: ['Flutter 앱 구조 설계', 'Google Sheets 연동', '비용 항목 UI 개발', 'Riverpod 상태 관리', 'iOS 실기기 배포'],
     implementations: [
-      '입주비용과 후불이자 화면을 하단 네비게이션으로 구성',
-      '비용 항목의 상태와 납입 흐름을 카드형 UI로 표시',
-      'Excel workbook 구조를 기준으로 mock datasource와 repository 계층 구성',
+      '입주비용, 후불이자, 잔금준비, 월지출 화면을 하단 네비게이션으로 구성',
+      'Google Sheets API 기반 데이터 조회 및 저장 구조 구현',
+      'deleted 플래그 기준 데이터 제외 처리',
+      '날짜 serial 값 파싱 처리',
       'Riverpod 기반 상태 관리와 GoRouter 기반 라우팅 적용',
     ],
     problemSolving: [
-      '비용 항목을 모바일에서 빠르게 확인할 수 있도록 화면 구조를 단순화했습니다.',
-      'Google Sheets 연동 전에도 개발과 검증이 가능하도록 정적 datasource 기반 구조를 먼저 구성했습니다.',
-      '포트폴리오 노출 시 개인 금액이 드러나지 않도록 화면 예시를 비식별 형태로 교체했습니다.',
+      '백엔드 없이 Google Sheets를 데이터 저장소처럼 사용해 개인용 운영 비용을 줄였습니다.',
+      '시트 구조 변경에 대응할 수 있도록 datasource와 repository 계층을 분리했습니다.',
+      '개인 금액이 포트폴리오에 노출되지 않도록 화면 이미지를 별도로 비식별 처리했습니다.',
     ],
     results: [
-      '입주 비용 관련 주요 항목을 탭 단위로 분리해 탐색성 개선',
-      '향후 Google Sheets 연동이 가능한 데이터 계층 기반 마련',
-      '민감 정보 없이 프로젝트 구조와 UI 의도를 설명할 수 있는 포트폴리오 이미지 구성',
+      '앱과 Google Sheets 간 양방향 데이터 변경 확인',
+      '입주 비용과 잔금 준비 현황을 모바일에서 매일 확인 가능한 구조 완성',
+      'App Store 없이 개인 아이폰에 직접 설치 가능한 운영 형태 구성',
     ],
-    technologies: ['Flutter', 'Dart'],
-    libraries: ['Riverpod', 'GoRouter', 'SharedPreferences', 'fl_chart'],
+    technologies: ['Flutter', 'Dart', 'Google Sheets API'],
+    libraries: ['Riverpod', 'GoRouter', 'SharedPreferences', 'fl_chart', 'google_sign_in', 'googleapis'],
   },
 ]
