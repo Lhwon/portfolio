@@ -72,6 +72,7 @@ const acsImageMap = Object.fromEntries(
 const acsImages = [
   acsImageMap['page1.png'],
   acsImageMap['page2.png'],
+  acsImageMap['page3.png'],
 ].filter((url): url is string => Boolean(url))
 
 const acsMainImage = acsImageMap['page1.png'] ?? acsImages[0]
@@ -465,15 +466,14 @@ export const projects: PortfolioProject[] = [
     period: '2026.06 ~ 최근',
     contribution: '100%',
     summary:
-      '입주 비용과 후불 이자 데이터를 Google Sheets와 연동해 모바일에서 관리할 수 있도록 개발한 개인용 Flutter 앱',
+      'Google Sheets를 연동한 내 집 마련 자산 관리 앱',
     keywords: ['Flutter', 'Dart', 'Riverpod', 'GoRouter', 'Google Sheets API', 'Private Finance'],
     achievements: [
       'Google Sheets 기반 데이터 양방향 동기화 구현',
       '입주 비용과 후불 이자 현황을 모바일 대시보드로 구조화',
       '백엔드 없이 개인용 운영 가능한 앱 구조 구현',
     ],
-    overview:
-      '입주 비용 관리 대장을 Google Sheets와 연동해 모바일에서 확인하고 수정하는 개인용 Flutter 앱과 민감 금액을 제외한 화면 이미지 노출',
+    overview: '내 집 마련 준비를 위해 Google Sheets로 관리하던 입주 비용과 자금 계획을 모바일에서 더 쉽고 직관적으로 확인할 수 있도록 개발한 개인용 앱',
     responsibilities: ['Flutter 앱 구조 설계', 'Google Sheets 연동', '비용 항목 UI 개발', 'Riverpod 상태 관리', 'iOS 실기기 배포'],
     implementations: [
       '입주비용과 후불이자 화면을 하단 네비게이션으로 구성',
@@ -483,9 +483,8 @@ export const projects: PortfolioProject[] = [
       'Riverpod 기반 상태 관리와 GoRouter 기반 라우팅 적용',
     ],
     problemSolving: [
-      '백엔드 없이 Google Sheets를 데이터 저장소처럼 활용한 개인용 운영 비용 감소',
-      '시트 구조 변경에 대응하기 위한 datasource와 repository 계층 분리',
-      '개인 금액이 포트폴리오에 노출되지 않도록 화면 이미지 비식별 처리',
+      '백엔드 없이 Google Sheets를 데이터 저장소처럼 활용하여 운영 비용 ZERO',
+      '시트 구조 변경에 대응하기 위한 datasource와 repository 계층 분리'
     ],
     results: [
       '앱과 Google Sheets 간 양방향 데이터 변경 확인',
