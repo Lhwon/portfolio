@@ -2,6 +2,8 @@ import type { PortfolioProject } from '@/types/portfolio'
 import bigDataPlatformImage from '@/assets/images/big_data_flatform.png'
 import emsImage from '@/assets/images/ems.png'
 import hseImage from '@/assets/images/hse.png'
+import llmProjectImage from '@/assets/images/llm/llm-project.png'
+import llmProjectVideo from '@/assets/videos/llm-project.mp4'
 import mesImage from '@/assets/images/mes.png'
 
 const bcrHandheldImageModules = import.meta.glob<string>(
@@ -29,28 +31,6 @@ const bcrHandheldImages = [
   bcrHandheldImageMap['page6.png'],
   bcrHandheldImageMap['page8.png'],
   bcrHandheldImageMap['page9.png'],
-].filter((url): url is string => Boolean(url))
-
-const nexusImageModules = import.meta.glob<string>(
-  '/src/assets/images/nexus/*.png',
-  {
-    eager: true,
-    import: 'default',
-  },
-)
-
-const nexusImageMap = Object.fromEntries(
-  Object.entries(nexusImageModules).map(([path, url]) => {
-    const fileName = path.split('/').pop() ?? ''
-
-    return [fileName, url]
-  }),
-)
-
-const nexusImages = [
-  nexusImageMap['dashboard.png'],
-  nexusImageMap['agvDashboard.png'],
-  nexusImageMap['hisiotryDashboard.png'],
 ].filter((url): url is string => Boolean(url))
 
 const acsImageModules = import.meta.glob<string>(
@@ -401,52 +381,61 @@ export const projects: PortfolioProject[] = [
     technologies: ['Android Studio', 'Java', 'Spring Boot', 'MariaDB'],
   },
   {
-    id: 'acs-nexus',
-    name: 'ACS 통합 관제 시스템',
+    id: 'local-llm-rag-system',
+    name: '사내 업무 특화 Local LLM / RAG 시스템',
     company: '벰로보틱스',
-    thumbnailUrl: nexusImageMap['dashboard.png'],
-    detailImageUrl: nexusImageMap['dashboard.png'],
-    imageUrls: nexusImages,
-    imageAlt: 'ACS 통합 관제 시스템 화면',
-    imageCaptions: [
-      '통합 대시보드',
-      'AGV/AMR 상태와 작업 흐름을 확인하는 관제 대시보드',
-      '이력 데이터를 조회하고 분석하는 히스토리 대시보드',
-    ],
-    period: '2025.03 ~ 현재',
+    thumbnailUrl: llmProjectImage,
+    detailImageUrl: llmProjectImage,
+    imageAlt: 'Local LLM RAG 시스템 화면',
+    imageCaption: '사내 기술자료 기반 대화형 AI Web UI',
+    videoUrl: llmProjectVideo,
+    videoCaption: 'Streaming 응답과 RAG 기반 질의응답 시연 영상',
+    period: '2026.07 ~ 현재',
     contribution: '100%',
     summary:
-      'AGV/AMR의 실시간 상태와 명령 흐름을 통합 관제 화면에서 모니터링하고 제어할 수 있도록 개발한 Web 기반 ACS 프로젝트',
-    keywords: ['ACS', 'AGV/AMR', 'WebSocket', '2D/3D Map', 'Realtime Control', 'Enhancement'],
+      '사내 ACS/AGV/AMR 기술자료와 운영 데이터를 기반으로 질문을 분석하고 필요한 정보를 검색해 답변하는 Local LLM 기반 AI 시스템',
+    keywords: ['Local LLM', 'RAG', 'Agent', 'Streaming Chat', 'Vector DB', 'Image Analysis'],
     achievements: [
-      '대용량 맵 환경에서도 부드러운 렌더링 유지',
-      '실시간 관제 정확도 향상',
-      '네트워크 지연 환경에서도 끊김 없는 주행 표현 구현',
+      'Ollama 기반 Local LLM 환경 구축 및 Gemma 계열 모델 활용 질의응답 시스템 개발',
+      'EmbeddingGemma 기반 사내 기술자료 임베딩과 Vector DB 검색 구조 구현',
+      'Intent, Entity 분석 기반 Agent 및 운영 데이터 조회 구조 개발',
+      'Vue 3 + TypeScript 기반 ChatGPT 형태의 대화형 AI Web UI 구현',
     ],
     overview:
-      'AGV/AMR의 위치, 배터리, 에러, 명령 상태, 이력 데이터를 WebSocket으로 실시간 동기화하고 차량 상태와 작업 흐름을 직관적으로 파악하는 Web 기반 ACS 시스템',
-    responsibilities: ['관제 UI 개발', '실시간 상태 동기화', '렌더링 최적화', '주행 애니메이션 구현', '운영 기능 고도화'],
+      '사내 ACS/AGV/AMR 관련 기술자료와 운영 데이터를 활용해 사용자 질문을 분석하고 문서 검색, 데이터 조회, 답변 생성을 수행하는 Local LLM / RAG 기반 AI 시스템',
+    responsibilities: [
+      'Local LLM 기반 AI 서비스 개발',
+      '사내 기술자료 기반 RAG Pipeline 구축',
+      'LLM Agent 및 운영 데이터 조회 구조 개발',
+      '대화형 AI Web UI 개발',
+      '응답 지연 분석 및 Cache 기반 성능 최적화',
+    ],
     implementations: [
-      '공장 레이아웃 2D/3D 시각화',
-      'AGV/AMR 위치, 배터리, 에러 상태 실시간 동기화',
-      'WebSocket 기반 실시간 관제 및 제어 인터페이스 구현',
-      'Map 자료구조 기반 데이터 관리 구조 개선',
-      'requestAnimationFrame 기반 렌더링 최적화',
-      'Lerp/Slerp 보간 알고리즘 기반 주행 애니메이션 구현',
-      '운영 편의성을 높이기 위한 화면 및 제어 기능 개선',
-      '현장 피드백 기반 고도화 기능 반영',
+      'Ollama 기반 Local LLM 실행 환경 구축',
+      'Gemma 계열 모델을 활용한 질의응답 시스템 개발',
+      '답변 생성, 이미지 분석, 임베딩 모델을 분리한 멀티 모델 구조 설계',
+      'Streaming 방식을 적용한 ChatGPT 형태의 실시간 대화형 서비스 구현',
+      'EmbeddingGemma 기반 사내 문서 임베딩과 Vector DB 검색 구조 구현',
+      '문서 Chunking 및 Metadata 관리 기반 검색 정확도 개선',
+      '사용자 질문의 Intent와 Entity를 분석하는 Agent 구조 개발',
+      '운영 데이터 조회 결과와 RAG 검색 Context를 결합한 최종 답변 생성 구조 구현',
+      '추천 질문, 이미지 분석, 답변 피드백 기능을 포함한 AI Web UI 구현',
+      '사용자 피드백 데이터를 SQLite에 저장하는 답변 품질 개선 기반 구성',
     ],
     problemSolving: [
-      '상태 데이터를 Map 구조로 관리한 갱신 비용 및 탐색 비용 감소',
-      '프레임 단위 렌더링과 보간 적용을 통한 지연 환경의 주행 표현 개선',
+      '질문 유형과 작업 목적에 따라 답변 생성, 이미지 분석, 임베딩 모델을 분리한 멀티 모델 구조 설계',
+      '사용자 질문과 관련 문서를 Context로 제공하는 RAG Pipeline 구성',
+      'LLM이 조회 계획을 생성하고 운영 데이터를 조회한 뒤 검색 결과와 결합하는 Agent 처리 흐름 구현',
+      '모델 호출 및 데이터 조회 과정의 응답 지연 분석과 Cache 및 처리 구조 개선',
     ],
     results: [
-      '대용량 맵 환경에서도 부드러운 렌더링 유지',
-      '실시간 관제 정확도 향상',
-      '운영 가시성 및 제어 효율 향상',
+      '사내 기술자료 기반 질의응답 활용성 향상',
+      '운영 데이터와 문서 검색 결과를 결합한 업무 특화 답변 생성',
+      'Streaming 기반 실시간 대화형 AI 사용 경험 구현',
+      '피드백 데이터 저장을 통한 답변 품질 개선 기반 마련',
     ],
-    technologies: ['Vue3', 'TypeScript', 'Java', 'Spring Boot', 'PostgreSQL'],
-    libraries: ['Three.js'],
+    technologies: ['Python', 'FastAPI', 'Vue3', 'TypeScript', 'Ollama', 'Gemma', 'RAG', 'SQLite'],
+    libraries: ['Qwen-VL', 'EmbeddingGemma', 'Vector DB'],
   },
   {
     id: 'apt-plan-app',

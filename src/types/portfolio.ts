@@ -43,6 +43,8 @@ export interface PortfolioProject {
   imageAlt?: string
   imageCaption?: string
   imageCaptions?: string[]
+  videoUrl?: string
+  videoCaption?: string
   period: string
   contribution: string
   summary: string

@@ -15,31 +15,41 @@
       <v-card-text class="pa-6">
         <div class="project-detail-image mb-8">
           <v-carousel
-            v-if="projectImages.length > 0"
+            v-if="projectMedia.length > 0"
             class="project-image-carousel"
             height="360"
             hide-delimiter-background
             show-arrows="hover"
           >
             <v-carousel-item
-              v-for="(imageUrl, index) in projectImages"
-              :key="imageUrl"
+              v-for="(media, index) in projectMedia"
+              :key="`${media.type}-${media.url}`"
             >
               <div class="project-dialog-image-frame">
                 <v-img
+                  v-if="media.type === 'image'"
                   :alt="`${project.imageAlt ?? project.name} ${index + 1}`"
                   class="project-dialog-image"
                   contain
                   height="360"
-                  :src="imageUrl"
-                  @dblclick="openFullscreenImage(imageUrl)"
+                  :src="media.url"
+                  @dblclick="openFullscreenImage(media.url)"
+                />
+
+                <video
+                  v-else
+                  class="project-dialog-video"
+                  controls
+                  playsinline
+                  preload="metadata"
+                  :src="media.url"
                 />
 
                 <div
-                  v-if="getImageCaption(index)"
+                  v-if="media.caption"
                   class="project-image-caption"
                 >
-                  {{ getImageCaption(index) }}
+                  {{ media.caption }}
                 </div>
               </div>
             </v-carousel-item>
@@ -227,6 +237,12 @@ import {
   getTechnologyChipStyle,
 } from '@/utils/technologyChips'
 
+interface ProjectMedia {
+  type: 'image' | 'video'
+  url: string
+  caption: string
+}
+
 const props = defineProps<{
   project: PortfolioProject | null
 }>()
@@ -238,13 +254,32 @@ const emit = defineEmits<{
 const { smAndDown } = useDisplay()
 const fullscreenImageUrl = ref<string | null>(null)
 
-const projectImages = computed(() => {
+const projectMedia = computed<ProjectMedia[]>(() => {
   if (!props.project) {
     return []
   }
 
-  return props.project.imageUrls
+  const imageUrls = props.project.imageUrls
     ?? (props.project.detailImageUrl ? [props.project.detailImageUrl] : [])
+
+  const imageMedia = imageUrls.map((url, index) => ({
+    type: 'image' as const,
+    url,
+    caption: getMediaCaption(index),
+  }))
+
+  if (!props.project.videoUrl) {
+    return imageMedia
+  }
+
+  return [
+    ...imageMedia,
+    {
+      type: 'video',
+      url: props.project.videoUrl,
+      caption: props.project.videoCaption ?? '',
+    },
+  ]
 })
 
 const primaryTechnologies = computed(() => {
@@ -266,7 +301,7 @@ const libraryTechnologies = computed(() => {
 /**
  * 이미지 순서에 맞는 설명을 반환한다
  */
-const getImageCaption = (index: number) => {
+const getMediaCaption = (index: number) => {
   if (!props.project) {
     return ''
   }
