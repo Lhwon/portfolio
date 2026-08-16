@@ -33,6 +33,18 @@ export interface CareerStory {
   paragraphs: string[]
 }
 
+export interface ProjectArchitectureFlow {
+  title: string
+  description: string
+  icon: string
+}
+
+export interface ProjectArchitecture {
+  imageUrl?: string
+  caption?: string
+  flows: ProjectArchitectureFlow[]
+}
+
 export interface PortfolioProject {
   id: string
   name: string
@@ -48,7 +60,6 @@ export interface PortfolioProject {
   period: string
   contribution: string
   summary: string
-  keywords: string[]
   achievements: string[]
   overview: string
   responsibilities: string[]
@@ -57,4 +68,5 @@ export interface PortfolioProject {
   results: string[]
   technologies: string[]
   libraries?: string[]
+  architecture?: ProjectArchitecture
 }

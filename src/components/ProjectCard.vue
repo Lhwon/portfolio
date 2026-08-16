@@ -13,8 +13,9 @@
         v-if="project.thumbnailUrl"
         :alt="project.imageAlt ?? `${project.name} thumbnail`"
         class="project-thumbnail-image"
-        contain
-        height="160"
+        cover
+        eager
+        height="176"
         :src="project.thumbnailUrl"
       />
       <div
@@ -47,7 +48,7 @@
         <v-chip 
           v-for="technology in cardTechnologies"
           :key="technology"
-          class="technology-chip"
+          class="technology-chip project-card-chip"
           :prepend-icon="getTechnologyChipIcon(technology)"
           size="small"
           :style="getTechnologyChipStyle(technology)"

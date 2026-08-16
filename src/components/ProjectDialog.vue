@@ -7,13 +7,13 @@
     @update:model-value="handleDialogUpdate"
   >
     <v-card v-if="project" color="surface">
-      <v-toolbar color="surface" density="comfortable">
-        <v-toolbar-title class="text-wrap">{{ project.name }}</v-toolbar-title>
+      <v-toolbar class="project-dialog-toolbar" color="surface" density="comfortable">
+        <v-spacer />
         <v-btn icon="mdi-close" variant="text" @click="emitClose" />
       </v-toolbar>
 
-      <v-card-text class="pa-6">
-        <div class="project-detail-image mb-8">
+      <v-card-text class="project-dialog-body">
+        <div class="project-detail-image mb-4">
           <v-carousel
             v-if="projectMedia.length > 0"
             class="project-image-carousel"
@@ -64,11 +64,16 @@
           </div>
         </div>
 
-        <section class="project-dialog-heading mb-8">
-          <h2 class="text-h4 text-md-h3 font-weight-bold mb-5">
+        <section class="project-dialog-heading mb-4">
+          <h2 class="text-h4 text-md-h3 font-weight-bold mb-2">
             {{ project.name }}
           </h2>
+          <p class="project-dialog-summary text-body-1 text-medium-emphasis mb-0">
+            {{ project.summary }}
+          </p>
+        </section>
 
+        <section class="project-meta-panel mb-5">
           <div class="project-property-list">
             <div class="project-property-row">
               <v-icon
@@ -101,7 +106,7 @@
                 <v-chip
                   v-for="technology in primaryTechnologies"
                   :key="technology"
-                  class="technology-chip"
+                  class="technology-chip project-meta-chip"
                   :prepend-icon="getTechnologyChipIcon(technology)"
                   size="small"
                   :style="getTechnologyChipStyle(technology)"
@@ -126,7 +131,7 @@
                 <v-chip
                   v-for="technology in libraryTechnologies"
                   :key="technology"
-                  class="technology-chip"
+                  class="technology-chip project-meta-chip"
                   :prepend-icon="getTechnologyChipIcon(technology)"
                   size="small"
                   :style="getTechnologyChipStyle(technology)"
@@ -146,49 +151,22 @@
               <span class="project-property-label">기여도</span>
               <span class="text-body-2">{{ project.contribution }}</span>
             </div>
-
-            <div class="project-property-row project-property-row--description">
-              <v-icon
-                class="project-property-icon"
-                icon="mdi-text-box-outline"
-                size="20"
-              />
-              <span class="project-property-label">설명</span>
-              <p class="project-property-description text-body-2 text-medium-emphasis mb-0">
-                {{ project.summary }}
-              </p>
-            </div>
           </div>
         </section>
 
-        <v-row>
-          <v-col cols="12" md="6">
-            <DetailBlock title="프로젝트 개요" :items="[project.overview]" />
-            <DetailBlock title="기술적 문제와 해결" :items="project.problemSolving" />
-          </v-col>
-
-          <v-col cols="12" md="6">
-            <DetailBlock title="주요 구현 기능" :items="project.implementations" />
-            <DetailBlock title="성과" :items="project.results" />
-
-            <div>
-              <h4 class="text-subtitle-1 font-weight-bold mb-3">관련 키워드</h4>
-              <div class="d-flex flex-wrap ga-2">
-                <v-chip
-                  v-for="keyword in project.keywords"
-                  :key="keyword"
-                  color="primary"
-                  variant="tonal"
-                >
-                  {{ keyword }}
-                </v-chip>
-              </div>
-            </div>
-          </v-col>
-        </v-row>
+        <div class="project-detail-stack">
+          <DetailBlock title="프로젝트 개요" :items="[project.overview]" />
+          <ProjectArchitecture
+            v-if="project.architecture"
+            :architecture="project.architecture"
+          />
+          <DetailBlock title="주요 구현 기능" :items="project.implementations" />
+          <DetailBlock title="기술적 문제와 해결" :items="project.problemSolving" />
+          <DetailBlock title="성과" :items="project.results" />
+        </div>
       </v-card-text>
 
-      <v-card-actions class="justify-end pa-6 pt-0">
+      <v-card-actions class="justify-end px-7 pb-5 pt-0">
         <v-btn color="primary" variant="flat" @click="emitClose">
           닫기
         </v-btn>
@@ -231,6 +209,7 @@
 import { computed, defineComponent, h, ref } from 'vue'
 import { useDisplay } from 'vuetify'
 import type { PropType } from 'vue'
+import ProjectArchitecture from '@/components/ProjectArchitecture.vue'
 import type { PortfolioProject } from '@/types/portfolio'
 import {
   getTechnologyChipIcon,
@@ -345,15 +324,15 @@ const DetailBlock = defineComponent({
   },
   setup(props) {
     return () =>
-      h('div', { class: 'mb-6' }, [
-        h('h4', { class: 'text-subtitle-1 font-weight-bold mb-3' }, props.title),
+      h('section', { class: 'project-detail-section' }, [
+        h('h4', { class: 'text-subtitle-1 font-weight-bold mb-1' }, props.title),
         h(
           'ul',
           { class: 'detail-list' },
           props.items.map((item) =>
             h(
               'li',
-              { class: 'text-body-2 text-medium-emphasis mb-2' },
+              { class: 'text-body-2 text-medium-emphasis' },
               item,
             ),
           ),
@@ -378,102 +357,3 @@ const emitClose = () => {
   emit('close')
 }
 </script>
-
-<style scoped>
-.project-dialog-image {
-  border-radius: 18px;
-}
-
-.project-image-carousel {
-  border-radius: 18px;
-  overflow: hidden;
-}
-
-.project-image-placeholder {
-  min-height: 220px;
-  border: 1px dashed rgba(var(--v-theme-on-surface), 0.24);
-  border-radius: 18px;
-  background: rgba(var(--v-theme-on-surface), 0.03);
-}
-
-.project-image-placeholder--large {
-  min-height: 360px;
-}
-
-.project-property-list {
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-}
-
-.project-property-row {
-  display: grid;
-  grid-template-columns: 20px 72px minmax(0, 1fr);
-  column-gap: 10px;
-  align-items: center;
-}
-
-.project-property-row--description {
-  align-items: start;
-}
-
-.project-property-icon {
-  color: rgb(var(--v-theme-primary));
-}
-
-.project-property-label {
-  font-size: 0.875rem;
-  font-weight: 700;
-  line-height: 20px;
-  color: rgba(var(--v-theme-on-surface), 0.78);
-}
-
-.project-property-description {
-  align-self: start;
-  margin: 0;
-  padding: 0;
-  line-height: 20px;
-}
-
-.detail-list {
-  padding-left: 18px;
-}
-
-.technology-chip {
-  font-weight: 700;
-}
-
-.project-fullscreen-dialog {
-  z-index: 2600;
-}
-
-.project-fullscreen-viewer {
-  position: relative;
-  width: 100vw;
-  height: 100vh;
-  padding: 24px;
-  background: rgba(0, 0, 0, 0.92);
-}
-
-.project-fullscreen-close {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  z-index: 1;
-}
-
-.project-fullscreen-image {
-  max-width: 100%;
-  max-height: 100%;
-}
-
-@media (max-width: 600px) {
-  .project-property-row {
-    grid-template-columns: 20px 64px minmax(0, 1fr);
-  }
-
-  .project-fullscreen-viewer {
-    padding: 12px;
-  }
-}
-</style>

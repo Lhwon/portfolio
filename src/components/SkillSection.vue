@@ -10,8 +10,14 @@
         <v-col v-for="group in skillGroups" :key="group.title" cols="12" md="6">
           <v-card class="h-100" color="surface" variant="flat">
             <v-card-title>{{ group.title }}</v-card-title>
-            <v-card-text class="d-flex flex-wrap ga-2">
-              <v-chip v-for="skill in group.items" :key="skill" color="primary" variant="tonal">
+            <v-card-text class="d-flex flex-wrap ga-3">
+              <v-chip
+                v-for="skill in group.items"
+                :key="skill"
+                class="skill-chip"
+                color="primary"
+                variant="tonal"
+              >
                 {{ skill }}
               </v-chip>
             </v-card-text>

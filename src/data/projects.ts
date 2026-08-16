@@ -100,7 +100,6 @@ export const projects: PortfolioProject[] = [
     contribution: '20%',
     summary:
       '발전소 운영 데이터를 수집, 분석하고 주요 지표를 실시간으로 모니터링할 수 있도록 구성한 빅데이터 플랫폼',
-    keywords: ['Big Data', 'Power Plant', 'Dashboard', 'Map Visualization', 'Realtime Monitoring'],
     achievements: [
       '전국 발전소 운영 현황을 한 화면에서 확인할 수 있는 대시보드 구성',
       '지도 기반 발전소 데이터 시각화 구현',
@@ -126,6 +125,26 @@ export const projects: PortfolioProject[] = [
     ],
     technologies: ['Vue2', 'Spring Boot', 'PostgreSQL'],
     libraries: ['devExpress', 'EChart', 'Vuetify'],
+    architecture: {
+      caption: '운영 데이터 수집부터 지도, 차트, 테이블 기반 모니터링까지 이어지는 데이터 시각화 구조',
+      flows: [
+        {
+          title: '운영 데이터',
+          description: '발전소별 운영 지표와 실시간 상태 데이터',
+          icon: 'mdi-database-outline',
+        },
+        {
+          title: 'API Layer',
+          description: '발전량, 공급량, 상세 지표 조회 처리',
+          icon: 'mdi-api',
+        },
+        {
+          title: 'Dashboard UI',
+          description: '지도, 차트, 테이블 기반 통합 모니터링 화면',
+          icon: 'mdi-monitor-dashboard',
+        },
+      ],
+    },
   },
   {
     id: 'smart-web-mes',
@@ -138,7 +157,6 @@ export const projects: PortfolioProject[] = [
     contribution: '20%',
     summary:
       '웹 기반으로 생산 공정의 실시간 모니터링과 관리 기능을 제공해 생산성과 자원 관리 효율을 높이는 MES 프로젝트',
-    keywords: ['MES', 'Material Management', 'Process Management', 'Realtime Monitoring', 'Admin UI'],
     achievements: [
       '시스템 메뉴 관리 관리자 화면 구현',
       '자재 상태 모니터링 및 자재 흐름 추적 기능 구현',
@@ -164,6 +182,26 @@ export const projects: PortfolioProject[] = [
       '생산 현장 데이터의 웹 기반 운영 흐름 개선',
     ],
     technologies: ['Vue2', 'Spring Boot', 'PostgreSQL'],
+    architecture: {
+      caption: '생산, 자재, 재고 데이터를 웹 기반 MES 화면으로 연결하는 관리 구조',
+      flows: [
+        {
+          title: 'Manufacturing Data',
+          description: '자재, 재고, 공정 진행 상태 데이터',
+          icon: 'mdi-factory',
+        },
+        {
+          title: 'MES API',
+          description: '공정 CRUD, 자재 이동, 메뉴 권한 처리',
+          icon: 'mdi-server-network',
+        },
+        {
+          title: 'Web MES UI',
+          description: '역할 기반 메뉴와 생산 현장 모니터링 화면',
+          icon: 'mdi-view-dashboard-outline',
+        },
+      ],
+    },
   },
   {
     id: 'hi-energy-monitoring',
@@ -177,7 +215,6 @@ export const projects: PortfolioProject[] = [
     contribution: '30%',
     summary:
       '사내 식용수 사용량을 실시간으로 확인하고 운영일지와 고지서 발송 업무를 웹 기반으로 관리하는 모니터링 시스템',
-    keywords: ['EMS', 'Water Monitoring', 'Operation Log', 'Mail Automation', 'Reusable Components'],
     achievements: [
       '사업부, 부서 선택 공통 컴포넌트 개발',
       '연도, 월, 일 선택이 가능한 동적 날짜 선택 컴포넌트 개발',
@@ -205,6 +242,26 @@ export const projects: PortfolioProject[] = [
     ],
     technologies: ['Vue2', 'Spring Boot', 'MSSQL'],
     libraries: ['TuiGrid', 'EChart', 'Vuetify'],
+    architecture: {
+      caption: '사용량 데이터, 운영일지, 고지서 발송 기능을 하나의 모니터링 화면으로 연결한 구조',
+      flows: [
+        {
+          title: 'Usage Data',
+          description: '식용수 사용량과 운영일지 입력 데이터',
+          icon: 'mdi-water-outline',
+        },
+        {
+          title: 'Automation Module',
+          description: '사용량 집계, 시간 계산, 고지서 발송 처리',
+          icon: 'mdi-cog-sync-outline',
+        },
+        {
+          title: 'Monitoring UI',
+          description: '실시간 사용량 확인과 운영 업무 관리 화면',
+          icon: 'mdi-chart-line',
+        },
+      ],
+    },
   },
   {
     id: 'hse-safety-management',
@@ -217,7 +274,6 @@ export const projects: PortfolioProject[] = [
     contribution: '20%',
     summary:
       '노후화된 통합 안전관리 시스템을 리뉴얼해 위험성 평가, 안전 리스크 공유, 리포트 출력을 지원한 HSE 프로젝트',
-    keywords: ['HSE', 'Risk Assessment', 'Safety Risk', 'Dashboard', 'Data Migration', 'Report'],
     achievements: [
       '대시보드 조회 속도 약 20초에서 5초 이내로 개선',
       '5천만 건 이상 데이터 마이그레이션 안정화',
@@ -250,6 +306,31 @@ export const projects: PortfolioProject[] = [
     ],
     technologies: ['Vue3', 'Spring Boot', 'Oracle'],
     libraries: ['RealGrid', 'EChart', 'OZ Report', 'Vuetify'],
+    architecture: {
+      caption: '위험성 평가, 안전 리스크 공유, 스케줄러, 리포트 출력을 연결한 안전관리 운영 구조',
+      flows: [
+        {
+          title: 'Field User',
+          description: '위험성 평가, 현장 리스크 제보, 개선 요청 입력',
+          icon: 'mdi-account-hard-hat-outline',
+        },
+        {
+          title: 'HSE Service',
+          description: '결재 흐름, 알림 스케줄링, 리포트 데이터 처리',
+          icon: 'mdi-shield-check-outline',
+        },
+        {
+          title: 'Oracle DB',
+          description: '대규모 안전관리 데이터와 이관 데이터 저장',
+          icon: 'mdi-database',
+        },
+        {
+          title: 'Dashboard / Report',
+          description: '대시보드 조회와 OZ Report 기반 PDF 출력',
+          icon: 'mdi-file-chart-outline',
+        },
+      ],
+    },
   },
   {
     id: 'asset-management-system',
@@ -259,7 +340,6 @@ export const projects: PortfolioProject[] = [
     contribution: '40%',
     summary:
       '임직원이 업무 목적으로 법인 차량을 예약, 이용, 반납할 수 있도록 지원하고 차량 정보와 정비 이력을 관리하는 내부 운영 시스템',
-    keywords: ['Vehicle Management', 'Reservation', 'Maintenance', 'CRUD', 'Internal System'],
     achievements: [
       '법인 차량 관리 업무의 시스템화',
       '차량 등록 및 정비 이력 관리 편의성 향상',
@@ -293,6 +373,26 @@ export const projects: PortfolioProject[] = [
     ],
     technologies: ['Vue3', 'Spring Boot', 'PostgreSQL'],
     libraries: ['Vuetify', 'Jasper'],
+    architecture: {
+      caption: '차량 예약, 이용, 반납, 정비 이력을 관리 화면과 데이터 저장소로 연결한 내부 운영 구조',
+      flows: [
+        {
+          title: 'User / Admin',
+          description: '차량 예약, 이용, 반납, 정비 이력 입력',
+          icon: 'mdi-account-cog-outline',
+        },
+        {
+          title: 'Asset Service',
+          description: '차량 정보 CRUD와 정비 주기 기준 관리',
+          icon: 'mdi-car-cog',
+        },
+        {
+          title: 'PostgreSQL',
+          description: '차량 기본 정보와 정비 내역 저장',
+          icon: 'mdi-database-outline',
+        },
+      ],
+    },
   },
   {
     id: 'acs-web-ui',
@@ -310,7 +410,6 @@ export const projects: PortfolioProject[] = [
     contribution: '40%',
     summary:
       'AGV/AMR의 위치, 상태, 명령, 이력 데이터를 통합 관제 화면에서 실시간으로 모니터링하고 제어할 수 있도록 고도화한 Web 기반 ACS 프로젝트',
-    keywords: ['ACS', 'AGV/AMR', 'WebSocket', '2D/3D Map', 'Realtime Control', 'Enhancement'],
     achievements: [
       '대용량 맵 환경에서도 부드러운 렌더링 유지',
       '실시간 관제 정확도 향상',
@@ -340,6 +439,31 @@ export const projects: PortfolioProject[] = [
     ],
     technologies: ['Vue3', 'TypeScript', 'Spring Boot', 'MariaDB'],
     libraries: ['Three.js', 'EChart', 'Vuetify', 'TuiGrid'],
+    architecture: {
+      caption: 'Web UI, 실시간 통신, ACS Core, AGV/AMR 상태 데이터를 연결한 관제 구조',
+      flows: [
+        {
+          title: 'Operator Web UI',
+          description: '2D/3D 맵, 상태 모니터링, 제어 인터페이스',
+          icon: 'mdi-monitor-dashboard',
+        },
+        {
+          title: 'WebSocket / API',
+          description: '실시간 상태 동기화와 제어 명령 전달',
+          icon: 'mdi-lan-connect',
+        },
+        {
+          title: 'ACS Core',
+          description: '명령 처리, 상태 관리, 이력 데이터 연동',
+          icon: 'mdi-router-network',
+        },
+        {
+          title: 'AGV / AMR',
+          description: '위치, 배터리, 에러, 주행 상태 데이터',
+          icon: 'mdi-robot-industrial-outline',
+        },
+      ],
+    },
   },
   {
     id: 'android-barcode-reader',
@@ -362,7 +486,6 @@ export const projects: PortfolioProject[] = [
     period: '2026.01 ~ 2026.02',
     contribution: '100%',
     summary: '산업 현장 단말에서 바코드를 스캔하고 작업 데이터를 빠르게 확인할 수 있도록 개발한 Android 앱',
-    keywords: ['Android', 'Java', 'Barcode', 'Mobile App', 'Field Operation'],
     achievements: ['현장 입력 업무 간소화', '바코드 기반 데이터 조회 속도 개선', '모바일 단말 운영 편의성 향상'],
     overview:
       'Android Studio와 Java 기반의 바코드 리더기 단말용 현장 업무 애플리케이션',
@@ -379,6 +502,26 @@ export const projects: PortfolioProject[] = [
     ],
     results: ['현장 입력 업무 간소화', '바코드 기반 데이터 조회 속도 개선', '모바일 단말 운영 편의성 향상'],
     technologies: ['Android Studio', 'Java', 'Spring Boot', 'MariaDB'],
+    architecture: {
+      caption: '바코드 스캔 이벤트에서 현장 데이터 조회 화면까지 이어지는 모바일 업무 처리 구조',
+      flows: [
+        {
+          title: 'Handheld Device',
+          description: '바코드 스캔 이벤트와 사용자 입력 처리',
+          icon: 'mdi-barcode-scan',
+        },
+        {
+          title: 'Android App',
+          description: '스캔 결과 파싱과 작업 정보 조회 화면',
+          icon: 'mdi-android',
+        },
+        {
+          title: 'Backend API',
+          description: '작업 데이터 조회와 저장 처리',
+          icon: 'mdi-api',
+        },
+      ],
+    },
   },
   {
     id: 'local-llm-rag-system',
@@ -394,7 +537,6 @@ export const projects: PortfolioProject[] = [
     contribution: '100%',
     summary:
       '사내 ACS/AGV/AMR 기술자료와 운영 데이터를 기반으로 질문을 분석하고 필요한 정보를 검색해 답변하는 Local LLM 기반 AI 시스템',
-    keywords: ['Local LLM', 'RAG', 'Agent', 'Streaming Chat', 'Vector DB', 'Image Analysis'],
     achievements: [
       'Ollama 기반 Local LLM 환경 구축 및 Gemma 계열 모델 활용 질의응답 시스템 개발',
       'EmbeddingGemma 기반 사내 기술자료 임베딩과 Vector DB 검색 구조 구현',
@@ -436,6 +578,31 @@ export const projects: PortfolioProject[] = [
     ],
     technologies: ['Python', 'FastAPI', 'Vue3', 'TypeScript', 'Ollama', 'Gemma', 'RAG', 'SQLite'],
     libraries: ['Qwen-VL', 'EmbeddingGemma', 'Vector DB'],
+    architecture: {
+      caption: 'Chat UI, Agent, Vector DB, Local LLM을 연결한 사내 업무 특화 RAG 처리 구조',
+      flows: [
+        {
+          title: 'Chat Web UI',
+          description: '질문 입력, Streaming 응답, 이미지 분석, 피드백 수집',
+          icon: 'mdi-chat-processing-outline',
+        },
+        {
+          title: 'FastAPI / Agent',
+          description: 'Intent, Entity 분석과 조회 계획 생성',
+          icon: 'mdi-brain',
+        },
+        {
+          title: 'RAG Pipeline',
+          description: '문서 Chunking, Metadata, Vector DB 검색',
+          icon: 'mdi-vector-link',
+        },
+        {
+          title: 'Local LLM',
+          description: 'Ollama 기반 답변 생성, 이미지 분석, 임베딩 모델 분리',
+          icon: 'mdi-robot-outline',
+        },
+      ],
+    },
   },
   {
     id: 'apt-plan-app',
@@ -449,20 +616,19 @@ export const projects: PortfolioProject[] = [
       '입주 비용 현황 요약 대시보드',
       '비용 항목',
       '중도금 이자 관리',
-      '목표 금액 달성을 위한 잔금 마련',
+      '목표 금액 관리 화면',
       '앱 설정',
     ],
     period: '2026.06 ~ 최근',
     contribution: '100%',
     summary:
-      'Google Sheets를 연동한 내 집 마련 자산 관리 앱',
-    keywords: ['Flutter', 'Dart', 'Riverpod', 'GoRouter', 'Google Sheets API', 'Private Finance'],
+      'Google Sheets를 연동한 입주 비용 관리 앱',
     achievements: [
       'Google Sheets 기반 데이터 양방향 동기화 구현',
       '입주 비용과 후불 이자 현황을 모바일 대시보드로 구조화',
       '백엔드 없이 개인용 운영 가능한 앱 구조 구현',
     ],
-    overview: '내 집 마련 준비를 위해 Google Sheets로 관리하던 입주 비용과 자금 계획을 모바일에서 더 쉽고 직관적으로 확인할 수 있도록 개발한 개인용 앱',
+    overview: 'Google Sheets로 관리하던 입주 비용과 납부 항목을 모바일에서 더 쉽고 직관적으로 확인할 수 있도록 개발한 개인용 앱',
     responsibilities: ['Flutter 앱 구조 설계', 'Google Sheets 연동', '비용 항목 UI 개발', 'Riverpod 상태 관리', 'iOS 실기기 배포'],
     implementations: [
       '입주비용과 후불이자 화면을 하단 네비게이션으로 구성',
@@ -482,5 +648,25 @@ export const projects: PortfolioProject[] = [
     ],
     technologies: ['Flutter', 'Dart', 'Google Sheets API'],
     libraries: ['Riverpod', 'GoRouter', 'SharedPreferences', 'fl_chart', 'google_sign_in', 'googleapis'],
+    architecture: {
+      caption: 'Flutter 앱과 Google Sheets를 직접 연동한 백엔드 없는 개인용 정적 운영 구조',
+      flows: [
+        {
+          title: 'Flutter App',
+          description: '입주 비용, 이자, 설정 화면과 모바일 대시보드',
+          icon: 'mdi-cellphone',
+        },
+        {
+          title: 'State / Routing',
+          description: 'Riverpod 상태 관리와 GoRouter 화면 전환',
+          icon: 'mdi-source-branch',
+        },
+        {
+          title: 'Google Sheets',
+          description: '비용 항목 조회, 저장, 동기화 처리',
+          icon: 'mdi-google-spreadsheet',
+        },
+      ],
+    },
   },
 ]

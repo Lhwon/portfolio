@@ -8,6 +8,19 @@ body {
   margin: 0;
 }
 
+/* 브라우저 기본 텍스트 여백을 제거하고 Vuetify utility class로 간격을 명시적으로 관리한다. */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+span {
+  margin: 0;
+  padding: 0;
+}
+
 /* 섹션 사이의 수직 리듬과 고정 헤더 이동 위치를 맞춘다. */
 .section-block {
   scroll-margin-top: 88px;
@@ -108,15 +121,38 @@ body {
 
 /* 프로젝트 카드 썸네일 영역의 비율과 모서리를 고정해 이미지 유무와 관계없이 카드 높이를 안정화한다. */
 .project-thumbnail {
-  height: 160px;
+  position: relative;
+  height: 176px;
   overflow: hidden;
   border-radius: 8px 8px 0 0;
-  background: #ecf4f3;
+  background:
+    linear-gradient(135deg, rgba(24, 124, 116, 0.12), rgba(59, 130, 246, 0.08)),
+    #ecf4f3;
 }
 
-/* 프로젝트 이미지를 잘리지 않게 표시하고 남는 여백은 배경으로 정리한다. */
+/* 카드 썸네일은 화면의 핵심 영역이 먼저 보이도록 상단 기준으로 채운다. */
 .project-thumbnail-image {
-  background: rgba(255, 255, 255, 0.65);
+  height: 100%;
+  background: rgba(255, 255, 255, 0.45);
+  filter: saturate(1.05) contrast(1.04);
+}
+
+/* Vuetify 이미지 내부의 실제 img 위치를 상단 중심으로 고정한다. */
+.project-thumbnail-image .v-img__img {
+  object-position: top center;
+  transform: scale(1.04);
+}
+
+/* 썸네일 하단에 은은한 그라데이션을 추가해 카드 본문과 자연스럽게 이어지게 한다. */
+.project-thumbnail::after {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 40px;
+  background: linear-gradient(180deg, transparent, rgba(255, 255, 255, 0.72));
+  content: "";
+  pointer-events: none;
 }
 
 /* 카드에는 기본 정보만 보여주므로 요약 문구가 과하게 길어지지 않게 제한한다. */
@@ -133,9 +169,46 @@ body {
   font-weight: 700;
 }
 
+/* 프로젝트 상세 팝업의 기술 칩은 아이콘과 긴 기술명이 여유 있게 보이도록 폭과 좌우 여백을 넓힌다. */
+.project-meta-chip {
+  min-width: 88px;
+  justify-content: center;
+  padding-inline: 14px !important;
+}
+
+.project-meta-chip .v-chip__prepend {
+  margin-inline-start: -2px;
+  margin-inline-end: 6px;
+}
+
+/* 프로젝트 카드의 기술 칩은 좁은 카드 안에서도 아이콘과 텍스트가 눌려 보이지 않도록 조정한다. */
+.project-card-chip {
+  min-width: 74px;
+  justify-content: center;
+  padding-inline: 10px !important;
+}
+
+.project-card-chip .v-chip__prepend {
+  margin-inline-start: -1px;
+  margin-inline-end: 5px;
+}
+
+/* 핵심 역량 칩은 긴 기술명도 여유 있게 읽히도록 최소 너비와 좌우 여백을 넓힌다. */
+.skill-chip {
+  min-width: 76px;
+  justify-content: center;
+  padding-inline: 14px !important;
+}
+
 /* 다크 모드 이미지 영역은 이전 배경과 자연스럽게 이어지도록 어둡게 처리한다. */
 .v-theme--portfolioDark .project-thumbnail {
-  background: rgba(255, 255, 255, 0.04);
+  background:
+    linear-gradient(135deg, rgba(95, 179, 166, 0.12), rgba(159, 183, 213, 0.08)),
+    rgba(255, 255, 255, 0.04);
+}
+
+.v-theme--portfolioDark .project-thumbnail::after {
+  background: linear-gradient(180deg, transparent, rgba(25, 31, 36, 0.78));
 }
 
 /* 프로젝트 이미지가 아직 없을 때도 적용 위치를 명확히 보여주는 자리 표시 영역이다. */
@@ -152,6 +225,20 @@ body {
 .v-theme--portfolioDark .project-image-placeholder {
   border-color: rgba(255, 255, 255, 0.22);
   background: linear-gradient(135deg, rgba(95, 179, 166, 0.12), rgba(159, 183, 213, 0.08));
+}
+
+/* 상세 팝업 상단은 본문 제목과 중복되지 않도록 닫기 동작 중심으로 정리한다. */
+.project-dialog-toolbar {
+  border-bottom: 1px solid rgba(15, 23, 42, 0.06);
+}
+
+.v-theme--portfolioDark .project-dialog-toolbar {
+  border-bottom-color: rgba(255, 255, 255, 0.08);
+}
+
+/* 상세 팝업 본문은 미디어, 제목, 메타정보, 상세 섹션이 일정한 폭으로 읽히도록 구성한다. */
+.project-dialog-body {
+  padding: 20px 28px 24px !important;
 }
 
 /* 상세 팝업 이미지 영역은 데스크톱에서 프로젝트 화면을 크게 확인할 수 있도록 높이를 분리한다. */
@@ -206,16 +293,35 @@ body {
   max-width: 840px;
 }
 
+/* 프로젝트 한 줄 요약은 제목 바로 아래에서 전체 맥락을 먼저 전달한다. */
+.project-dialog-summary {
+  max-width: 820px;
+  line-height: 1.7;
+}
+
+/* 프로젝트 기간, 회사, 기술 스택을 본문과 분리된 메타정보 패널로 묶는다. */
+.project-meta-panel {
+  padding: 12px 14px;
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.5);
+}
+
+.v-theme--portfolioDark .project-meta-panel {
+  border-color: rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.03);
+}
+
 /* 기간, 회사, 기술 스택 등 프로젝트 속성을 일정한 간격으로 읽을 수 있게 정렬한다. */
 .project-property-list {
   display: grid;
-  gap: 14px;
+  gap: 12px;
 }
 
 /* 아이콘, 라벨, 값을 같은 행에 배치해 노션형 정보 구조를 구현한다. */
 .project-property-row {
   display: grid;
-  grid-template-columns: 24px minmax(92px, 120px) 1fr;
+  grid-template-columns: 24px minmax(82px, 112px) minmax(0, 1fr);
   align-items: flex-start;
   gap: 12px;
 }
@@ -236,6 +342,113 @@ body {
 /* 설명 속성은 긴 문장을 담을 수 있어 행 높이가 자연스럽게 늘어나도록 둔다. */
 .project-property-row--description {
   align-items: flex-start;
+}
+
+/* 상세 설명 섹션은 개요, 구현, 해결, 성과가 위에서 아래로 이어지도록 구성한다. */
+.project-detail-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+/* 상세 섹션은 반복 카드 대신 문서형 구분선으로 풀어 답답함을 줄인다. */
+.project-detail-section {
+  min-width: 0;
+  padding: 16px 0;
+  border-top: 1px solid rgba(15, 23, 42, 0.08);
+  background: transparent;
+}
+
+.v-theme--portfolioDark .project-detail-section {
+  border-top-color: rgba(255, 255, 255, 0.08);
+  background: transparent;
+}
+
+/* 아키텍처 영역은 다이어그램만 자연스럽게 강조되도록 얇은 배경을 둔다. */
+.project-architecture-section {
+  padding: 18px 0 22px;
+}
+
+/* 시스템 아키텍처 이미지는 직접 추가한 설계도가 잘리지 않도록 비율을 유지한다. */
+.project-architecture-image {
+  min-height: 220px;
+  border-radius: 8px;
+  background: rgba(24, 124, 116, 0.06);
+}
+
+/* 아키텍처 설명과 다이어그램 사이에 충분한 여백을 둬 제목 영역과 도식 영역을 분리한다. */
+.project-architecture-caption {
+  margin-bottom: 14px;
+  line-height: 1.6;
+}
+
+/* 아키텍처는 노드와 연결선으로 구성해 시스템 흐름을 다이어그램처럼 보여준다. */
+.project-architecture-diagram {
+  display: grid;
+  align-items: stretch;
+  gap: 0;
+  padding: 20px;
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.28);
+}
+
+/* 각 아키텍처 노드는 시스템 구성 요소 하나를 독립적으로 설명한다. */
+.project-architecture-node {
+  min-width: 0;
+  min-height: 132px;
+  padding: 18px 14px;
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.68);
+  text-align: center;
+}
+
+/* 노드 아이콘은 구성 요소의 성격을 빠르게 구분할 수 있게 강조한다. */
+.project-architecture-node-icon {
+  width: 40px;
+  height: 40px;
+  margin: 0 auto 10px;
+  border-radius: 10px;
+  color: rgb(var(--v-theme-primary));
+  background: rgba(24, 124, 116, 0.1);
+}
+
+/* 노드 사이 연결선은 데이터나 요청 흐름의 방향을 보여준다. */
+.project-architecture-connector {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 56px;
+  color: rgba(var(--v-theme-on-surface), 0.42);
+}
+
+/* 아키텍처 노드의 설명 텍스트는 박스 안에서 여유 있게 읽히도록 행간을 넓힌다. */
+.project-architecture-node .text-caption {
+  line-height: 1.55;
+}
+
+/* 연결선 없이 화살표만 노드 사이 중앙에 배치해 흐름을 간결하게 보여준다. */
+.project-architecture-connector-icon {
+  margin: 0;
+}
+
+.v-theme--portfolioDark .project-architecture-image {
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.v-theme--portfolioDark .project-architecture-diagram {
+  border-color: rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.v-theme--portfolioDark .project-architecture-node {
+  border-color: rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.v-theme--portfolioDark .project-architecture-node-icon {
+  background: rgba(95, 179, 166, 0.16);
 }
 
 /* 이미지 전체 화면 뷰어는 노션처럼 콘텐츠만 어둡게 띄워 집중도를 높인다. */
@@ -288,7 +501,12 @@ body {
 
 /* 상세 팝업 목록은 Vuetify 기본 여백보다 촘촘하게 구성한다. */
 .detail-list {
+  margin-bottom: 0;
   padding-left: 20px;
+}
+
+.detail-list li + li {
+  margin-top: 4px;
 }
 
 /* 작은 화면에서는 주요 섹션과 프로필 이미지 크기를 줄여 첫 화면 밀도를 맞춘다. */
@@ -309,6 +527,10 @@ body {
 
   .project-image-placeholder--large {
     min-height: 220px;
+  }
+
+  .project-dialog-body {
+    padding: 16px !important;
   }
 
   .project-image-carousel {
@@ -341,11 +563,44 @@ body {
   }
 
   .project-property-row {
-    grid-template-columns: 24px 76px 1fr;
+    grid-template-columns: 24px 72px minmax(0, 1fr);
     gap: 10px;
   }
 
   .project-dialog-heading {
     max-width: none;
+  }
+
+  .project-meta-panel,
+  .project-detail-section {
+    padding: 14px 0;
+  }
+
+  .project-detail-stack {
+    gap: 0;
+  }
+
+  .project-architecture-diagram {
+    grid-template-columns: 1fr !important;
+    padding: 14px;
+    gap: 0;
+  }
+
+  .project-architecture-node {
+    text-align: left;
+  }
+
+  .project-architecture-node-icon {
+    margin-right: 0;
+    margin-left: 0;
+  }
+
+  .project-architecture-connector {
+    min-height: 26px;
+  }
+
+  .project-architecture-connector-icon {
+    margin: 0;
+    transform: rotate(90deg);
   }
 }
