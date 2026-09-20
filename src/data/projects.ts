@@ -58,31 +58,31 @@ const acsImages = [
 const acsMainImage = acsImageMap['page1.png'] ?? acsImages[0]
 const acsDetailImage = acsImageMap['page2.png'] ?? acsMainImage
 
-const aptAppImageModules = import.meta.glob<string>(
-  [
-    '/src/assets/images/aptapp/*.png',
-    '/src/assets/images/aptapp/*.jpg',
-    '/src/assets/images/aptapp/*.jpeg',
-    '/src/assets/images/aptapp/*.webp',
-  ],
-  {
-    eager: true,
-    import: 'default',
-  },
-)
+// const aptAppImageModules = import.meta.glob<string>(
+//   [
+//     '/src/assets/images/aptapp/*.png',
+//     '/src/assets/images/aptapp/*.jpg',
+//     '/src/assets/images/aptapp/*.jpeg',
+//     '/src/assets/images/aptapp/*.webp',
+//   ],
+//   {
+//     eager: true,
+//     import: 'default',
+//   },
+// )
 
-const aptAppImageMap = Object.fromEntries(
-  Object.entries(aptAppImageModules).map(([path, url]) => {
-    const fileName = path.split('/').pop() ?? ''
+// const aptAppImageMap = Object.fromEntries(
+//   Object.entries(aptAppImageModules).map(([path, url]) => {
+//     const fileName = path.split('/').pop() ?? ''
 
-    return [fileName, url]
-  }),
-)
+//     return [fileName, url]
+//   }),
+// )
 
-const aptAppImages = Object.entries(aptAppImageMap)
-  .sort(([a], [b]) => a.localeCompare(b))
-  .map(([, url]) => url)
-  .filter((url): url is string => Boolean(url))
+// const aptAppImages = Object.entries(aptAppImageMap)
+//   .sort(([a], [b]) => a.localeCompare(b))
+//   .map(([, url]) => url)
+//   .filter((url): url is string => Boolean(url))
 
 // const aptAppThumbnailImage = aptAppImageMap['dashboard.png'] ?? aptAppImages[0]
 // const aptAppDetailImage = aptAppImageMap['dashboard.png'] ?? aptAppImages[0]
