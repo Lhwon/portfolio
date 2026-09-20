@@ -84,8 +84,8 @@ const aptAppImages = Object.entries(aptAppImageMap)
   .map(([, url]) => url)
   .filter((url): url is string => Boolean(url))
 
-const aptAppThumbnailImage = aptAppImageMap['dashboard.png'] ?? aptAppImages[0]
-const aptAppDetailImage = aptAppImageMap['dashboard.png'] ?? aptAppImages[0]
+// const aptAppThumbnailImage = aptAppImageMap['dashboard.png'] ?? aptAppImages[0]
+// const aptAppDetailImage = aptAppImageMap['dashboard.png'] ?? aptAppImages[0]
 
 export const projects: PortfolioProject[] = [
   {
