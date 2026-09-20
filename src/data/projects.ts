@@ -604,69 +604,69 @@ export const projects: PortfolioProject[] = [
       ],
     },
   },
-  {
-    id: 'apt-plan-app',
-    name: '입주비용관리',
-    company: 'Side Project',
-    thumbnailUrl: aptAppThumbnailImage,
-    detailImageUrl: aptAppDetailImage,
-    imageUrls: aptAppImages,
-    imageAlt: '입주비용관리 Flutter 앱 화면',
-    imageCaptions: [
-      '입주 비용 현황 요약 대시보드',
-      '비용 항목',
-      '중도금 이자 관리',
-      '목표 금액 관리 화면',
-      '앱 설정',
-    ],
-    period: '2026.06 ~ 최근',
-    contribution: '100%',
-    summary:
-      'Google Sheets를 연동한 입주 비용 관리 앱',
-    achievements: [
-      'Google Sheets 기반 데이터 양방향 동기화 구현',
-      '입주 비용과 후불 이자 현황을 모바일 대시보드로 구조화',
-      '백엔드 없이 개인용 운영 가능한 앱 구조 구현',
-    ],
-    overview: 'Google Sheets로 관리하던 입주 비용과 납부 항목을 모바일에서 더 쉽고 직관적으로 확인할 수 있도록 개발한 개인용 앱',
-    responsibilities: ['Flutter 앱 구조 설계', 'Google Sheets 연동', '비용 항목 UI 개발', 'Riverpod 상태 관리', 'iOS 실기기 배포'],
-    implementations: [
-      '입주비용과 후불이자 화면을 하단 네비게이션으로 구성',
-      'Google Sheets API 기반 데이터 조회 및 저장 구조 구현',
-      'deleted 플래그 기준 데이터 제외 처리',
-      '날짜 serial 값 파싱 처리',
-      'Riverpod 기반 상태 관리와 GoRouter 기반 라우팅 적용',
-    ],
-    problemSolving: [
-      '백엔드 없이 Google Sheets를 데이터 저장소처럼 활용하여 운영 비용 ZERO',
-      '시트 구조 변경에 대응하기 위한 datasource와 repository 계층 분리'
-    ],
-    results: [
-      '앱과 Google Sheets 간 양방향 데이터 변경 확인',
-      '입주 비용과 후불 이자 현황을 모바일에서 확인 가능한 구조 완성',
-      'App Store 없이 개인 아이폰에 직접 설치 가능한 운영 형태 구성',
-    ],
-    technologies: ['Flutter', 'Dart', 'Google Sheets API'],
-    libraries: ['Riverpod', 'GoRouter', 'SharedPreferences', 'fl_chart', 'google_sign_in', 'googleapis'],
-    architecture: {
-      caption: 'Flutter 앱과 Google Sheets를 직접 연동한 백엔드 없는 개인용 정적 운영 구조',
-      flows: [
-        {
-          title: 'Flutter App',
-          description: '입주 비용, 이자, 설정 화면과 모바일 대시보드',
-          icon: 'mdi-cellphone',
-        },
-        {
-          title: 'State / Routing',
-          description: 'Riverpod 상태 관리와 GoRouter 화면 전환',
-          icon: 'mdi-source-branch',
-        },
-        {
-          title: 'Google Sheets',
-          description: '비용 항목 조회, 저장, 동기화 처리',
-          icon: 'mdi-google-spreadsheet',
-        },
-      ],
-    },
-  },
+  // {
+  //   id: 'apt-plan-app',
+  //   name: '입주비용관리',
+  //   company: 'Side Project',
+  //   thumbnailUrl: aptAppThumbnailImage,
+  //   detailImageUrl: aptAppDetailImage,
+  //   imageUrls: aptAppImages,
+  //   imageAlt: '입주비용관리 Flutter 앱 화면',
+  //   imageCaptions: [
+  //     '입주 비용 현황 요약 대시보드',
+  //     '비용 항목',
+  //     '중도금 이자 관리',
+  //     '목표 금액 관리 화면',
+  //     '앱 설정',
+  //   ],
+  //   period: '2026.06 ~ 최근',
+  //   contribution: '100%',
+  //   summary:
+  //     'Google Sheets를 연동한 입주 비용 관리 앱',
+  //   achievements: [
+  //     'Google Sheets 기반 데이터 양방향 동기화 구현',
+  //     '입주 비용과 후불 이자 현황을 모바일 대시보드로 구조화',
+  //     '백엔드 없이 개인용 운영 가능한 앱 구조 구현',
+  //   ],
+  //   overview: 'Google Sheets로 관리하던 입주 비용과 납부 항목을 모바일에서 더 쉽고 직관적으로 확인할 수 있도록 개발한 개인용 앱',
+  //   responsibilities: ['Flutter 앱 구조 설계', 'Google Sheets 연동', '비용 항목 UI 개발', 'Riverpod 상태 관리', 'iOS 실기기 배포'],
+  //   implementations: [
+  //     '입주비용과 후불이자 화면을 하단 네비게이션으로 구성',
+  //     'Google Sheets API 기반 데이터 조회 및 저장 구조 구현',
+  //     'deleted 플래그 기준 데이터 제외 처리',
+  //     '날짜 serial 값 파싱 처리',
+  //     'Riverpod 기반 상태 관리와 GoRouter 기반 라우팅 적용',
+  //   ],
+  //   problemSolving: [
+  //     '백엔드 없이 Google Sheets를 데이터 저장소처럼 활용하여 운영 비용 ZERO',
+  //     '시트 구조 변경에 대응하기 위한 datasource와 repository 계층 분리'
+  //   ],
+  //   results: [
+  //     '앱과 Google Sheets 간 양방향 데이터 변경 확인',
+  //     '입주 비용과 후불 이자 현황을 모바일에서 확인 가능한 구조 완성',
+  //     'App Store 없이 개인 아이폰에 직접 설치 가능한 운영 형태 구성',
+  //   ],
+  //   technologies: ['Flutter', 'Dart', 'Google Sheets API'],
+  //   libraries: ['Riverpod', 'GoRouter', 'SharedPreferences', 'fl_chart', 'google_sign_in', 'googleapis'],
+  //   architecture: {
+  //     caption: 'Flutter 앱과 Google Sheets를 직접 연동한 백엔드 없는 개인용 정적 운영 구조',
+  //     flows: [
+  //       {
+  //         title: 'Flutter App',
+  //         description: '입주 비용, 이자, 설정 화면과 모바일 대시보드',
+  //         icon: 'mdi-cellphone',
+  //       },
+  //       {
+  //         title: 'State / Routing',
+  //         description: 'Riverpod 상태 관리와 GoRouter 화면 전환',
+  //         icon: 'mdi-source-branch',
+  //       },
+  //       {
+  //         title: 'Google Sheets',
+  //         description: '비용 항목 조회, 저장, 동기화 처리',
+  //         icon: 'mdi-google-spreadsheet',
+  //       },
+  //     ],
+  //   },
+  // },
 ]

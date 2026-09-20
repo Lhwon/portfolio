@@ -15,20 +15,20 @@ export const profile: Profile = {
   resumeUrl: `${publicBaseUrl}files/resume.pdf`,
   careerDescriptionUrl: `${publicBaseUrl}files/career-description.pdf`,
   contacts: [
-    {
-      label: 'GitHub',
-      href: 'https://github.com/',
-      icon: 'mdi-github',
-    },
-    {
-      label: 'Blog',
-      href: 'https://example.com',
-      icon: 'mdi-post-outline',
-    },
-    {
-      label: 'Email',
-      href: 'mailto:hello@example.com',
-      icon: 'mdi-email-outline',
-    },
+    // {
+    //   label: 'GitHub',
+    //   href: 'https://github.com/',
+    //   icon: 'mdi-github',
+    // },
+    // {
+    //   label: 'Blog',
+    //   href: 'https://example.com',
+    //   icon: 'mdi-post-outline',
+    // },
+    // {
+    //   label: 'Email',
+    //   href: 'mailto:hello@example.com',
+    //   icon: 'mdi-email-outline',
+    // },
   ],
 }
