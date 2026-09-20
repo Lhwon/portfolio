@@ -525,7 +525,7 @@ export const projects: PortfolioProject[] = [
   },
   {
     id: 'local-llm-rag-system',
-    name: '사내 업무 특화 Local LLM / RAG 시스템',
+    name: 'LLM / RAG 시스템',
     company: '벰로보틱스',
     thumbnailUrl: llmProjectImage,
     detailImageUrl: llmProjectImage,
@@ -579,7 +579,7 @@ export const projects: PortfolioProject[] = [
     technologies: ['Python', 'FastAPI', 'Vue3', 'TypeScript', 'Ollama', 'Gemma', 'RAG', 'SQLite'],
     libraries: ['Qwen-VL', 'EmbeddingGemma', 'Vector DB'],
     architecture: {
-      caption: 'Chat UI, Agent, Vector DB, Local LLM을 연결한 사내 업무 특화 RAG 처리 구조',
+      caption: 'Chat UI, Agent, Vector DB, Local LLM을 연결한 RAG 처리 구조',
       flows: [
         {
           title: 'Chat Web UI',

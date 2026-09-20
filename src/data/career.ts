@@ -5,7 +5,7 @@ export const careerStory: CareerStory = {
   paragraphs: [
     '빅데이터 플랫폼을 시작으로 MES, EMS, HSE, 자산관리 시스템까지 산업 현장의 업무 데이터를 웹으로 연결하는 경험을 쌓았습니다.',
     '제조, 에너지, 안전관리 영역에서 운영자가 데이터를 빠르게 확인하고 판단할 수 있도록 대시보드, 업무 화면, 자동화 기능, 데이터 마이그레이션을 개발했습니다.',
-    '현재는 Web 기반 ACS 시스템, Android 바코드 리더기 앱, 사내 업무 특화 Local LLM / RAG 시스템을 통해 장비, 단말, 운영 데이터, 기술자료를 연결하는 개발을 이어가고 있습니다.',
+    '현재는 Web 기반 ACS 시스템, Android 바코드 리더기 앱, LLM / RAG 시스템을 통해 장비, 단말, 운영 데이터, 기술자료를 연결하는 개발을 이어가고 있습니다.',
   ],
 }
 
@@ -34,7 +34,7 @@ export const careerItems: CareerItem[] = [
       '2025.03 Web 기반 ACS 시스템 개발 시작',
       '2026.01 Java 기반 Android 바코드 리더기 앱 개발',
       '2026.04 Web ACS 시스템 고도화 진행 중',
-      '2026.07 사내 업무 특화 Local LLM / RAG 시스템 개발',
+      '2026.07 LLM / RAG 시스템 개발',
       'WebSocket 기반 상태 동기화',
       'requestAnimationFrame 기반 렌더링 최적화',
       'Local LLM 기반 질의응답 및 RAG Pipeline 구성',
